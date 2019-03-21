@@ -6,10 +6,9 @@ GreenHood, a Robinhood clone, is an online platform that allows an individual to
 
 ## APIS 
 ### Coin Graphs
-1. https://coinmarketcap.com/api/pricing/
-2. https://docs.pro.coinbase.com/?ruby#api
-3. https://bittrex.github.io/api/v1-1
+https://min-api.cryptocompare.com/
+http://recharts.org/en-US/
 
 ### Cryptocurrency News
-
+google news
 
