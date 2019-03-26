@@ -1,5 +1,26 @@
 {
   "name": "GreenHood",
   "private": true,
-  "dependencies": {}
+  "dependencies": {},
+  "description": "The beginning of GreenHood",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rongyang610/GreenHood.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rongyang610/GreenHood/issues"
+  },
+  "homepage": "https://github.com/rongyang610/GreenHood#readme"
 }
