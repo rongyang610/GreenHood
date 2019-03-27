@@ -5,6 +5,6 @@ import session from './session/session_reducer';
 export default combineReducers({
     entities,
     session,
-    // errors,
+    errors,
     // ui
 });
