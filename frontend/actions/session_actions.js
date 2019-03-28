@@ -25,6 +25,12 @@ export const receiveErrors = errors => {
   };
 };
 
+export const clearErrors = () => {
+  return {
+    type: CLEAR_ERRORS
+  };
+};
+
 export const login = user => dispatch => {
     return UserAPIUtil.login(user).then(user => {
       return dispatch(receiveCurrentUser(user));
