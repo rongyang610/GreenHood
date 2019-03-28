@@ -1,11 +1,13 @@
 class Api::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
+        @user.buy_power = 5000
+        @user.portfolio_value = 0
         if @user.save
             login!(@user)
             render :show
         else
-            render @user.errors.full_messages
+            render json: @user.errors.full_messages, status: 422
         end
     end
 

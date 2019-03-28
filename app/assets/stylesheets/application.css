@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+
+
+.main-container{
+  position: absolute;
+}
+
+/***********************************************
+                 Placeholder css
+***********************************************/
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #d3d0d0;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: #d3d0d0;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: #d3d0d0;
+}
+/*----------------------------------------------*/

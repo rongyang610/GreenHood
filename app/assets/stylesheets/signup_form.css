@@ -1,0 +1,100 @@
+.signup-form-container{
+    min-height: 635px;
+    min-width: 400px;
+    max-width: 570px;
+    margin: 0 auto;
+    padding: 0 20px 0 20px;
+}
+
+.signup-logo{
+    margin: 35px 0 35px -15px;
+}
+
+span.signup-header{
+    font-size: 40px;
+    font-weight: 395;
+    margin: 5px 0 10px;
+    font-family: 'Roboto', sans-serif;
+    word-wrap:break-word;
+}
+.signup-header-phrase{
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 395;
+    word-wrap:break-word;
+}
+
+.signup-form{
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-input{
+    background: #fff;
+    padding: 10px 18px 10px 18px;
+    margin: 20px 0 20px;
+    color: #040d14;
+    width: 92%
+}
+
+.input-lg{
+    height: 14px
+    padding: 10px 16px;
+    font-size: 15px;
+    line-height: 1.33;
+    border-radius: 4px;
+    border: 1px solid #b1bfc4;
+}
+
+.input-lg:focus{
+    outline: none !important;
+    border:1px solid #21ce99;
+}
+
+.fname-signup{
+    margin-right:20px;
+}
+
+.name-signup-width{
+    width: 41%;
+}
+
+.signup-button{
+    width: 99%;
+    padding: 12px 0 12px;
+    border-radius:  5px;
+    background-color: #21ce99;
+    color: #fff;
+    font-size: 16.5px;
+}
+
+.signup-button:hover{
+    cursor: pointer;
+    width: 99%;
+    padding: 12px 0 12px;
+    border-radius:  5px;
+    background-color: #26AF84;
+    color: #F4F4F4;
+    font-size: 16.5px;
+}
+
+.go-to-login{
+    margin-top: 30px;
+    color: #b1bfc4;
+}
+
+.go-to-login > center > a{
+    margin-top: 30px;
+    color: #21ce99;;
+}
+
+.go-to-login > center > a:hover{
+    margin-top: 30px;
+    color: #4aeebd;;
+}
+
+@media only screen and (max-width: 563px) {
+    .name-signup-width{
+        width: 92%;
+    }
+}
