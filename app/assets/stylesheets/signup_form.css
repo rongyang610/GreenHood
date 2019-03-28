@@ -1,9 +1,9 @@
 .signup-form-container{
     min-height: 635px;
-    min-width: 400px;
-    max-width: 570px;
+    min-width: 525px;
+    max-width: 726px;
     margin: 0 auto;
-    padding: 0 20px 0 20px;
+    padding: 0 80px 0 40px;
 }
 
 .signup-logo{
@@ -32,13 +32,13 @@ span.signup-header{
 .signup-input{
     background: #fff;
     padding: 10px 18px 10px 18px;
-    margin: 20px 0 20px;
+    margin: 15px 0 15px;
     color: #040d14;
     width: 92%
 }
 
 .input-lg{
-    height: 14px
+    height: 14px;
     padding: 10px 16px;
     font-size: 15px;
     line-height: 1.33;
@@ -93,7 +93,7 @@ span.signup-header{
     color: #4aeebd;;
 }
 
-@media only screen and (max-width: 563px) {
+@media only screen and (max-width: 685px) {
     .name-signup-width{
         width: 92%;
     }

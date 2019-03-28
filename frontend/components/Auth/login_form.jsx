@@ -9,6 +9,10 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+    this.props.clear();
+  }
+
   update(field){
     return e => {
       this.setState({[field]: e.target.value});
