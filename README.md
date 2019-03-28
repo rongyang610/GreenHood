@@ -18,3 +18,8 @@ Considering:
 https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwigweHxu6LhAhXsct8KHacCC50QjRx6BAgBEAU&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F417286721711738709%2F&psig=AOvVaw3f-1igpPhTizrhFE-V-j1V&ust=1553781008607302
 
 http://www.polleverywhere.co/green-arrow-logo/green-arrow-logo-green-arrow-art-emblem-arrow-t-shirt-teepublic/
+
+
+###Bugs
+Issue: Page was rendering errors from prev page.
+Solution: Wrote a action creator clearError to clear the error when it renders to a new page.
