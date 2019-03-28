@@ -23,3 +23,6 @@ http://www.polleverywhere.co/green-arrow-logo/green-arrow-logo-green-arrow-art-e
 ###Bugs
 Issue: Page was rendering errors from prev page.
 Solution: Wrote a action creator clearError to clear the error when it renders to a new page.
+
+Issue: Couldn't upload to heroku because of jpg.
+Solution: had named my logo logo.jpeg instead of logo.jpg
