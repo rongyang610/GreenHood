@@ -33,43 +33,61 @@ class LoginForm extends React.Component {
     this.props.action(demo).then(() => this.props.history.push('/'));
   }
 
+  handleDemoSubmit(e){
+    e.preventDefault();
+    const demo = Object.assign({}, {email:"demo@gmail.com", username: "demo", password:"password"});
+    this.props.action(demo).then(() => this.props.history.push('/'));
+  }
+  
+  renderErrors(){
+    return this.props.errors.map((error, idx) => {
+      return <span key={idx}>{error}</span>
+    });
+  }
+
   render(){
     return (
-        <div>
-            <h2>Welcome to Greenhood</h2>
-            <form onSubmit={this.handleSubmit}>
-            <label htmlFor="email"> Email or Username:
-                <input 
-                id = "email"
-                type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                required="required"
-                />
-            </label>
-            <br/>
-            <label htmlFor="password"> Password:
-            <input
-                id="password"
-                type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                required="required"
-                />
-            </label> 
-            <br/>
-            <button>{this.props.button}</button>
-            <br/>
-            <Link to={"/signup"}>Don't have an account?</Link>
-            <br/>
-            
-            <div className="go-to-login">
-              <center>
-                <Link onClick={this.handleDemoSubmit} to="/">Demo Log In</Link>
-              </center>
-            </div>
+        <div className="login-main-container">
+          <div className="login-main-img-container">
+            <img className="login-img" src="https://skynet03.goffvps.com/baiter/greenhood/sessionPic.png"/>
+          </div>
+            <div className="login-main-form-container">
+              <span className="login-header">Welcome to Greenhood</span>
+              <form onSubmit={this.handleSubmit}>
+              <span>Email or Username:</span> 
+                  <br/>
+              <input 
+              id = "email"
+              type="text"
+              value={this.state.email}
+              onChange={this.update('email')}
+              required="required"
+              />
+              <br/>
+              <span>Password:</span> 
+              <br/>
+              <input
+              id="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.update('password')}
+              required="required"
+              />
+              <br/>
+              <Link to={"/signup"}>Don't have an account?</Link>
 
-            </form>
+              <div className="go-to-login">
+                <center>
+                  <Link onClick={this.handleDemoSubmit} to="/">Demo Log In</Link>
+                </center>
+              </div>
+
+              {this.renderErrors()}
+
+              <br/>
+              <button>{this.props.button}</button>
+              </form>
+            </div>
         </div>
     );
   }

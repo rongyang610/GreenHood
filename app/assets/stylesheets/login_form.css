@@ -1,0 +1,34 @@
+.login-main-container{
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-main-img-container{
+  position: relative;
+  max-width: 54%;
+  min-height: 100%;
+}
+
+.login-img{
+  background-position: center;
+  background-size: cover;
+  max-width: 100%;
+  height: auto%;
+  width: 100%;
+}
+
+.login-main-form-container{
+  /* position: absolute;
+  top: 41.5%;
+  left: 59%;
+  min-width: 412px; */
+}
+
+.login-header{
+  font-size: 40px;
+  font-weight: 395;
+  margin: 5px 0 10px;
+  font-family: 'Roboto', sans-serif;
+  word-wrap:break-word;
+}

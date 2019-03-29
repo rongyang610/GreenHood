@@ -56,7 +56,7 @@ span.signup-header{
 }
 
 .name-signup-width{
-    width: 41%;
+    width: 42.2%;
 }
 
 .signup-button{
@@ -91,6 +91,18 @@ span.signup-header{
 .go-to-login > center > a:hover{
     margin-top: 30px;
     color: #4aeebd;;
+}
+
+@media only screen and (max-width:800px) {
+    .name-signup-width{
+        width: 41.9%;
+    }
+}
+
+@media only screen and (max-width:780px) {
+    .name-signup-width{
+        width: 41.4%;
+    }
 }
 
 @media only screen and (max-width: 685px) {
