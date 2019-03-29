@@ -7,6 +7,7 @@ class LoginForm extends React.Component {
     super(props);
     this.state = this.props.initialState;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
 
   componentDidMount(){
@@ -22,13 +23,14 @@ class LoginForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     const user = Object.assign({}, this.state);
+    console.log(user);
     this.props.action(user).then(() => this.props.history.push('/'));
   }
-  
-  renderErrors(){
-    return this.props.errors.map((error, idx) => {
-      return <p key={idx}>{error}</p>
-    });
+
+  handleDemoSubmit(e){
+    e.preventDefault();
+    const demo = Object.assign({}, {email:"demo@gmail.com", username: "demo", password:"password"});
+    this.props.action(demo).then(() => this.props.history.push('/'));
   }
 
   render(){
@@ -56,13 +58,18 @@ class LoginForm extends React.Component {
                 />
             </label> 
             <br/>
+            <button>{this.props.button}</button>
+            <br/>
             <Link to={"/signup"}>Don't have an account?</Link>
             <br/>
-            {this.renderErrors()}
+            
+            <div className="go-to-login">
+              <center>
+                <Link onClick={this.handleDemoSubmit} to="/">Demo Log In</Link>
+              </center>
+            </div>
 
-            <button>{this.props.button}</button>
             </form>
-
         </div>
     );
   }
