@@ -123,6 +123,10 @@ class SignupForm extends React.Component {
               <button className="signup-button">{this.props.button}</button>
             </div>
 
+            <div>
+              {this.renderErrors()}
+            </div>
+
             <div className="signup-form-link">
               Already started? <Link to="/login">Log in to complete your application</Link>
             </div>

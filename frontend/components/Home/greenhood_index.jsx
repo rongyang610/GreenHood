@@ -8,8 +8,9 @@ class GreenhoodIndex extends React.Component {
     if(currentUser){
     return (
       <div>
-        <div>
-          <a href="/"><img src={window.navLogo} className='navLogo signup-logo' /></a>
+        <div classname="right-nav">
+          <a href="/"><img src={window.navLogo} className='navLogo' /></a>
+          greenhood
         </div>
         <h1>Welcome to Greenhood, {currentUser.username}! </h1>
         <button onClick={() => logout()}>Log out</button>
@@ -18,8 +19,9 @@ class GreenhoodIndex extends React.Component {
     } else {
       return (
         <div>
-          <div>
+          <div classname="right-nav">
             <a href="/"><img src={window.navLogo} className='navLogo signup-logo' /></a>
+            greenhood
           </div>
           <Link to={'/signup'}>Sign Up</Link>
           <br/>

@@ -39,11 +39,12 @@ span.signup-header{
 
 .input-lg{
     height: 14px;
-    padding: 10px 16px;
-    font-size: 15px;
+    padding: 15px 16px;
+    font-size: 17px;
     line-height: 1.33;
     border-radius: 4px;
     border: 1px solid #b1bfc4;
+    font-weight: lighter;
 }
 
 .input-lg:focus{
@@ -62,7 +63,7 @@ span.signup-header{
 .signup-button{
     width: 99%;
     padding: 12px 0 12px;
-    border-radius:  5px;
+    border-radius:  8px;
     background-color: #21ce99;
     color: #fff;
     font-size: 16.5px;
