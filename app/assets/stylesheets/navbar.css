@@ -1,17 +1,21 @@
-/* .main-container > .navbar{
-  position: fixed;
+.logo{
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: black;
 }
 
-.navbar-left{
-  
+.logo:hover{
+  color: #21ce99;
 }
 
- .navbar-right{
-
- } */
 .navLogo{
-  width: 55px;
-  height: 55px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  display: inline;
+  border: 1px solid white;
+}
+
+.navLogo:hover{
+  border: 1px solid #21ce99;
 }
