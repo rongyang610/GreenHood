@@ -7,6 +7,7 @@ class SignupForm extends React.Component {
     super(props);
     this.state = this.props.initialState;
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDemoSubmit = this.handleDemoSubmit.bind(this);
   }
 
   componentDidMount(){
@@ -23,6 +24,12 @@ class SignupForm extends React.Component {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.action(user).then(() => this.props.history.push('/'));
+  }
+
+  handleDemoSubmit(e){
+    e.preventDefault();
+    const demo = Object.assign({}, {email:"demo@gmail.com", username: "demo", password:"password"});
+    this.props.demo(demo).then(() => this.props.history.push('/'));
   }
 
   renderErrors(){
@@ -115,12 +122,19 @@ class SignupForm extends React.Component {
             <div>
               <button className="signup-button">{this.props.button}</button>
             </div>
-            
+
             <div className="go-to-login">
               <center>
-                Already started? <Link to={"/login"}>Log in to complete your application</Link>
+                Already started? <Link to="/login">Log in to complete your application</Link>
               </center>
             </div>
+
+            <div className="go-to-login">
+              <center>
+                <Link onClick={this.handleDemoSubmit} to="/">Demo Log In</Link>
+              </center>
+            </div>
+
           </div>
         </form>
       </div>
