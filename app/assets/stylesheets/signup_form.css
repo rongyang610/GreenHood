@@ -56,7 +56,7 @@ span.signup-header{
 }
 
 .name-signup-width{
-    width: 41%;
+    width: 42.2%;
 }
 
 .signup-button{
@@ -78,19 +78,32 @@ span.signup-header{
     font-size: 16.5px;
 }
 
-.go-to-login{
+.signup-form-link{
     margin-top: 30px;
     color: #b1bfc4;
+    text-align: center;
 }
 
-.go-to-login > center > a{
+.signup-form-link > a{
     margin-top: 30px;
     color: #21ce99;;
 }
 
-.go-to-login > center > a:hover{
+.signup-form-link > a:hover{
     margin-top: 30px;
     color: #4aeebd;;
+}
+
+@media only screen and (max-width:800px) {
+    .name-signup-width{
+        width: 41.9%;
+    }
+}
+
+@media only screen and (max-width:780px) {
+    .name-signup-width{
+        width: 41.4%;
+    }
 }
 
 @media only screen and (max-width: 685px) {

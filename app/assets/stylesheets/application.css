@@ -35,3 +35,9 @@
   color: #d3d0d0;
 }
 /*----------------------------------------------*/
+
+body{
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  margin: 0;
+}

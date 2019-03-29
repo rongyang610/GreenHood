@@ -32,45 +32,55 @@ class LoginForm extends React.Component {
     const demo = Object.assign({}, {email:"demo@gmail.com", username: "demo", password:"password"});
     this.props.action(demo).then(() => this.props.history.push('/'));
   }
+  
+  renderErrors(){
+    return this.props.errors.map((error, idx) => {
+      return <div key={idx}><i class="fas fa-exclamation-circle"></i>{error}</div>
+    });
+  }
 
   render(){
     return (
-        <div>
-            <h2>Welcome to Greenhood</h2>
-            <form onSubmit={this.handleSubmit}>
-            <label htmlFor="email"> Email or Username:
-                <input 
-                id = "email"
-                type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                required="required"
-                />
-            </label>
-            <br/>
-            <label htmlFor="password"> Password:
-            <input
-                id="password"
-                type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                required="required"
-                />
-            </label> 
-            <br/>
-            <button>{this.props.button}</button>
-            <br/>
-            <Link to={"/signup"}>Don't have an account?</Link>
-            <br/>
-            
-            <div className="go-to-login">
-              <center>
-                <Link onClick={this.handleDemoSubmit} to="/">Demo Log In</Link>
-              </center>
-            </div>
+        <div className="login-main-container">
+          <div className="login-main-img-container">
+          </div>
+          <div className="login-main-form-container">
+            <div className="login-header">Welcome to Greenhood</div>
+            <form onSubmit={this.handleSubmit} className="login-form">
+              <div className="">Email or Username</div> 
+              <input 
+              id = "email"
+              type="text"
+              value={this.state.email}
+              onChange={this.update('email')}
+              required="required"
+              />
+              <div>Password</div> 
+              <input
+              id="password"
+              type="password"
+              value={this.state.password}
+              onChange={this.update('password')}
+              required="required"
+              />
+              <br/>
+              <div className="login-form-link">
+                <Link to={"/signup"} className>Don't have an account?</Link>
+              </div>
 
+              <div className="login-form-link">
+                  <Link onClick={this.handleDemoSubmit} to="/">Demo Log In</Link>
+              </div>
+
+              <strong className="login-error">
+                {this.renderErrors()}
+              </strong>
+              
+
+              <button className="login-form-button">{this.props.button}</button>
             </form>
-        </div>
+          </div>
+      </div>
     );
   }
 }

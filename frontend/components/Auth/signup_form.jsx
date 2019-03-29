@@ -85,7 +85,7 @@ class SignupForm extends React.Component {
               <input 
               className="signup-input input-lg"
               id = "email-signup"
-              type="text"
+              type="email"
               value={this.state.email}
               onChange={this.update('email')}
               placeholder="Email address"
@@ -123,16 +123,12 @@ class SignupForm extends React.Component {
               <button className="signup-button">{this.props.button}</button>
             </div>
 
-            <div className="go-to-login">
-              <center>
-                Already started? <Link to="/login">Log in to complete your application</Link>
-              </center>
+            <div className="signup-form-link">
+              Already started? <Link to="/login">Log in to complete your application</Link>
             </div>
 
-            <div className="go-to-login">
-              <center>
-                <Link onClick={this.handleDemoSubmit} to="/">Demo Log In</Link>
-              </center>
+            <div className="signup-form-link">
+              <Link onClick={this.handleDemoSubmit} to="/">Demo Log In</Link>
             </div>
 
           </div>
