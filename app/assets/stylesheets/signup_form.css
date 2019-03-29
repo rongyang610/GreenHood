@@ -78,17 +78,18 @@ span.signup-header{
     font-size: 16.5px;
 }
 
-.go-to-login{
+.signup-form-link{
     margin-top: 30px;
     color: #b1bfc4;
+    text-align: center;
 }
 
-.go-to-login > center > a{
+.signup-form-link > a{
     margin-top: 30px;
     color: #21ce99;;
 }
 
-.go-to-login > center > a:hover{
+.signup-form-link > a:hover{
     margin-top: 30px;
     color: #4aeebd;;
 }

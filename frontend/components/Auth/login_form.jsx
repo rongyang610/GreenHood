@@ -32,16 +32,10 @@ class LoginForm extends React.Component {
     const demo = Object.assign({}, {email:"demo@gmail.com", username: "demo", password:"password"});
     this.props.action(demo).then(() => this.props.history.push('/'));
   }
-
-  handleDemoSubmit(e){
-    e.preventDefault();
-    const demo = Object.assign({}, {email:"demo@gmail.com", username: "demo", password:"password"});
-    this.props.action(demo).then(() => this.props.history.push('/'));
-  }
   
   renderErrors(){
     return this.props.errors.map((error, idx) => {
-      return <span key={idx}>{error}</span>
+      return <div key={idx}><i class="fas fa-exclamation-circle"></i>{error}</div>
     });
   }
 
@@ -49,13 +43,11 @@ class LoginForm extends React.Component {
     return (
         <div className="login-main-container">
           <div className="login-main-img-container">
-            <img className="login-img" src="https://skynet03.goffvps.com/baiter/greenhood/sessionPic.png"/>
           </div>
-            <div className="login-main-form-container">
-              <span className="login-header">Welcome to Greenhood</span>
-              <form onSubmit={this.handleSubmit}>
-              <span>Email or Username:</span> 
-                  <br/>
+          <div className="login-main-form-container">
+            <div className="login-header">Welcome to Greenhood</div>
+            <form onSubmit={this.handleSubmit} className="login-form">
+              <div className="">Email or Username</div> 
               <input 
               id = "email"
               type="text"
@@ -63,9 +55,7 @@ class LoginForm extends React.Component {
               onChange={this.update('email')}
               required="required"
               />
-              <br/>
-              <span>Password:</span> 
-              <br/>
+              <div>Password</div> 
               <input
               id="password"
               type="password"
@@ -74,21 +64,23 @@ class LoginForm extends React.Component {
               required="required"
               />
               <br/>
-              <Link to={"/signup"}>Don't have an account?</Link>
-
-              <div className="go-to-login">
-                <center>
-                  <Link onClick={this.handleDemoSubmit} to="/">Demo Log In</Link>
-                </center>
+              <div className="login-form-link">
+                <Link to={"/signup"} className>Don't have an account?</Link>
               </div>
 
-              {this.renderErrors()}
+              <div className="login-form-link">
+                  <Link onClick={this.handleDemoSubmit} to="/">Demo Log In</Link>
+              </div>
 
-              <br/>
-              <button>{this.props.button}</button>
-              </form>
-            </div>
-        </div>
+              <strong className="login-error">
+                {this.renderErrors()}
+              </strong>
+              
+
+              <button className="login-form-button">{this.props.button}</button>
+            </form>
+          </div>
+      </div>
     );
   }
 }

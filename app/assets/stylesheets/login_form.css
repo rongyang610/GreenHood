@@ -5,30 +5,89 @@
 }
 
 .login-main-img-container{
-  position: relative;
-  max-width: 54%;
-  min-height: 100%;
+  width: 50%;
+  background: url("https://skynet03.goffvps.com/baiter/greenhood/sessionPic.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
 }
 
-.login-img{
-  background-position: center;
-  background-size: cover;
-  max-width: 100%;
-  height: auto%;
-  width: 100%;
+.login-error > div{
+  color: black;
+  font-size: 13px;
+  font-weight: bolder;
+}
+
+.login-error > div > i{
+  color: black;
+  font-size: 15px;
+  font-weight: bolder;
+  margin-right: 2px;
 }
 
 .login-main-form-container{
-  /* position: absolute;
-  top: 41.5%;
-  left: 59%;
-  min-width: 412px; */
+  min-width: 412px;
+  margin-left: 50px;
 }
 
 .login-header{
-  font-size: 40px;
-  font-weight: 395;
-  margin: 5px 0 10px;
+  font-size: 27px;
+  font-weight: 500;
+  margin-bottom: 30px;
   font-family: 'Roboto', sans-serif;
-  word-wrap:break-word;
+}
+
+.login-form > div{
+  margin-bottom: 14px;
+  color: #535252;
+  font-size: 13px;
+}
+
+.login-form > input{
+  margin-bottom: 14px;
+  color: #535252;
+  padding: 14px 0 14px 14px;
+  background-color: #fafafa;
+  border-radius: 4px;
+  border: 2px solid #fafafa;
+  width: 100%;
+}
+
+.login-form > input:hover{
+  margin-bottom: 14px;
+  color: #535252;
+  padding: 14px 0 14px 14px;
+  background-color: white;
+  border-radius: 4px;
+  border: 2px solid #fafafa;
+  width: 100%;
+}
+
+.login-form > input:focus{
+  outline:none;
+  margin-bottom: 14px;
+  color: #535252;
+  padding: 14px 0 14px 14px;
+  background-color: white;
+  border-radius: 4px;
+  border: 2px solid #21ce99;
+  width: 100%;
+}
+
+.login-form-link{
+  color: #21ce99;
+}
+
+.login-form-link > a{
+  margin-top: 30px;
+  color: #21ce99;;
+}
+
+.login-form-button{
+  color: white;
+  background-color: #21ce99;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 15px 40px 15px 40px;
+  margin-top: 45px;
 }
