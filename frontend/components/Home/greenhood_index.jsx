@@ -21,10 +21,11 @@ class GreenhoodIndex extends React.Component {
     );
     } else {
       return (
-        <>
+        // .splash-no-user-main.container is located in splash_no_user.css
+        <div>
           <NavBarNoUser />
           <SplashNoUser />
-        </>
+        </div>
       );
     }
   }

@@ -1,28 +1,41 @@
+.splash-no-user-main-container{
+  display: flex;
+}
+
+.splash-no-user-main-center{
+  display: flex;
+  justify-content: center;
+}
+
 .splash-no-user-main{
   display:flex;
   justify-content: space-between;
+  flex-flow: nowrap;
   align-items: center;
-  width: 100%;
+  width: 1192px;
   height: 800px;
 }
 
 .splash-no-user-text-container{
-  max-width: 310px;
+  width: 350px;
   display: flex;
   flex-direction: column;
 }
 
 .splash-no-user-text-header{
-  font-size: 40px;
+  font-size: 44px;
+  font-weight: bolder;
 }
 
 .splash-no-user-text{
-  line-height: 1.1em;
+  line-height: 1.6;
+  margin: 36px 0;
 }
 
 .splash-no-user-img{
   max-height: 700px;
   width: auto/9;
+  margin-right: -60px;
   /*animation*/
   -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 13.1 */
   -moz-animation: fadein 3s; /* Firefox < 16 */

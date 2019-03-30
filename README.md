@@ -26,3 +26,12 @@ Solution: Wrote a action creator clearError to clear the error when it renders t
 
 Issue: Couldn't upload to heroku because of jpg.
 Solution: had named my logo logo.jpeg instead of logo.jpg
+
+Issue: Navbar was not being 100% width of parent width.
+Solution: changed 100% to inherit.
+
+Issue: Navbar was not lining up with contents.
+Solution: Created 2 div containers. main container is 100% of screen. And then set the 2nd container to be 1200px that way it will be identical to robinhood.
+
+Issue: Navbar mid-nav when put flex-start it would cover my logo.
+Solution: To fix this issue I gave my logo class a margin-right of 70px to get the right positions.

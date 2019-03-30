@@ -2,10 +2,16 @@
   display: flex;
   position:fixed;
   background-color: white;
-  justify-content: space-around;
-  padding: 10px 0;
+  justify-content: center;
   width: 100%;
   z-index: 1000;
+}
+
+.main-nav-container{
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  width: 1192px;
 }
 
 .left-nav{
@@ -13,6 +19,7 @@
   display: flex;
   align-items: center;
   width: 81px;
+  margin-right: 80px;
 }
 
 .logo{
@@ -40,6 +47,8 @@
 
 .mid-nav{
   display: flex;
+  justify-content: flex-start;
+  margin-right: auto;
   align-items: center;
   width: 300px;
 }
