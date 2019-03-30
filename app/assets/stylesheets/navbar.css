@@ -74,6 +74,10 @@
   width: 47px;
 }
 
+.right-nav > a > button:hover{
+  cursor: pointer;
+}
+
 .nav-login-button{
   background-color: transparent;
   border: 0;

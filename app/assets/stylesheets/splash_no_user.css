@@ -22,6 +22,14 @@
   flex-direction: column;
 }
 
+.splash-no-user-text-container > a{
+  width: 111px;
+}
+
+.splash-no-user-text-container > a > button {
+  cursor: pointer;
+}
+
 .splash-no-user-text-header{
   font-size: 44px;
   font-weight: bolder;
@@ -73,11 +81,13 @@
   to   { top:200px; opacity: 1;}
 }
 
-@media only screen and (max-width: 999px) {
+@media only screen and (max-width: 1200px) {
   .splash-no-user-main{
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 120px;
     width: 100%;
     height: 800px;
   }
