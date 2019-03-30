@@ -1,8 +1,26 @@
+.main-nav{
+  display: flex;
+  position:fixed;
+  background-color: white;
+  justify-content: space-around;
+  padding: 10px 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.left-nav{
+  /* border: 1px solid red; */
+  display: flex;
+  align-items: center;
+  width: 81px;
+}
+
 .logo{
   display: flex;
   align-items: center;
   text-decoration: none;
   color: black;
+  font-size: 17.5px;
 }
 
 .logo:hover{
@@ -18,4 +36,47 @@
 
 .navLogo:hover{
   border: 1px solid #21ce99;
+}
+
+.mid-nav{
+  display: flex;
+  align-items: center;
+  width: 300px;
+}
+
+.nav-header-text{
+  margin-right: 20%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 800;
+}
+
+.right-nav{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 190px;
+}
+
+.right-nav > a.nav-signup-button{
+  width: 59px;
+}
+
+.right-nav > a.nav-login-button{
+  width: 47px;
+}
+
+.nav-login-button{
+  background-color: transparent;
+  border: 0;
+  font-weight: bolder;
+  font-size: 16px;
+}
+
+.nav-signup-button{
+  padding: 15px 24px;
+  border-radius: 36px;
+  background-color: #21ce99;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
 }

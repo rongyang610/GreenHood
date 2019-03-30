@@ -80,12 +80,22 @@
 
 .login-form-link > a{
   margin-top: 30px;
-  color: #21ce99;;
+  color: #21ce99;
 }
 
 .login-form-button{
   color: white;
   background-color: #21ce99;
+  font-size: 14px;
+  border-radius: 4px;
+  padding: 15px 40px 15px 40px;
+  margin-top: 45px;
+}
+
+.login-form-button:hover{
+  cursor: pointer;
+  background-color: #3ee2b1;
+  color: white;
   font-size: 14px;
   border-radius: 4px;
   padding: 15px 40px 15px 40px;

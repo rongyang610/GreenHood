@@ -87,12 +87,12 @@ span.signup-header{
 
 .signup-form-link > a{
     margin-top: 30px;
-    color: #21ce99;;
+    color: #21ce99;
 }
 
 .signup-form-link > a:hover{
     margin-top: 30px;
-    color: #4aeebd;;
+    color: #4aeebd;
 }
 
 @media only screen and (max-width:800px) {
