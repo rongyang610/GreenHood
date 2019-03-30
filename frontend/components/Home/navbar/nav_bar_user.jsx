@@ -3,12 +3,14 @@ import Logo from './logo/logo';
 import {Link} from 'react-router-dom';
 
 
-const NavBarNoUser = () => {
+const NavBarUser = () => {
   return (
     <div className="main-nav">
       <div className="main-nav-container">
         <div className="left-nav">
-          <Logo />
+        <a href="/" className="logo">
+          <img src={window.navLogo} className='navLogo' /> 
+        </a>
         </div>
 
         <div className="mid-nav">
@@ -33,4 +35,4 @@ const NavBarNoUser = () => {
     );
 };
 
-export default NavBarNoUser;
+export default NavBarUser;
