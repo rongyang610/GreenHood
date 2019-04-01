@@ -1,0 +1,83 @@
+.nav-account-main-container{
+  position: absolute;
+  /* border: 1px solid black; */
+  width: 296px;
+  height: 510px;
+  top: 50px;
+  right: 0;
+  box-shadow: 0 0 4px 1px rgba(0, 0, 0, 0.01), 0 3px 24px rgba(48, 51, 51, 0.09);
+  z-index: 2;
+}
+
+.nav-account-main-container-none{
+  display: none;
+}
+
+.nav-account-container{
+  border-bottom: 0.1px solid #ebe9e9;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+}
+
+.nav-account-first-section-container{
+  width: 100%;
+  height: 126px;
+  justify-content: center;
+}
+
+.nav-account-second-section-container{
+  width: 100%;
+  height: 240px;
+  font-size: 13px;
+}
+
+.nav-account-third-section-container{
+  width: 100%;
+  height: 96px;
+  font-size: 13px;
+}
+
+.nav-account-fourth-section-container{
+  width: 100%;
+  height: 48px;
+  font-size: 13px;
+}
+
+.nav-account-component-first-section{
+  font-weight: 700;
+  padding: 0px 24px;
+}
+
+.nav-account-component{
+  font-weight: 700;
+  padding: 15px 24px;
+}
+
+.nav-account-component:hover{
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+.nav-account-port-buy{
+  display: flex;
+  flex-direction: row;
+  margin-top: 15px;
+}
+
+.port-buy-value{
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.port-buy-text{
+  font-size: 12.7px;
+  font-weight: 300;
+  margin-right: 30px;
+  font-family: sans-serif;
+}
+
+div.nav-account-container i{
+  font-size: 18px;
+  margin-right: 15px;
+}

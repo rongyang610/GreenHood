@@ -15,6 +15,27 @@
  */
 
 /***********************************************
+                 Reset file
+***********************************************/
+a, button, li, ul, ol{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+  list-style: none;
+}
+
+/*----------------------------------------------*/
+
+
+/***********************************************
                  Placeholder css
 ***********************************************/
 ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -35,4 +56,13 @@ body{
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   margin: 0;
+}
+
+.modal{
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  z-index: 1;
 }

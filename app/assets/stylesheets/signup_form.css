@@ -67,6 +67,7 @@ span.signup-header{
     background-color: #21ce99;
     color: #fff;
     font-size: 16.5px;
+    text-align: center;    
 }
 
 .signup-button:hover{
@@ -77,6 +78,7 @@ span.signup-header{
     background-color: #26AF84;
     color: #F4F4F4;
     font-size: 16.5px;
+    text-align: center;
 }
 
 .signup-form-link{

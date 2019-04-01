@@ -35,3 +35,13 @@ Solution: Created 2 div containers. main container is 100% of screen. And then s
 
 Issue: Navbar mid-nav when put flex-start it would cover my logo.
 Solution: To fix this issue I gave my logo class a margin-right of 70px to get the right positions.
+
+Issue: Couldn't allow user to log in as user or email. It would only take email or only accept username.
+Solution: Created a find_by_credentials_email. Then in sessions_controller i allowed the variable to = username or email
+
+Issue: I wanted the database to store the username and email as the way they typed it.
+Solution: Added a sql command ".where('lower(email) = ?', email.downcase).first". This avoided making 2 columns in the database
+
+Issue: When Account is clicked,focus, active. Modal box is shown by swapping out css.
+Solution: Created a state that had showAcc point to false. If the state of showAcc is false the class will display none otherwise it will just be an empty string. Then added a div nested within the tenary which had a class Modal. 
+

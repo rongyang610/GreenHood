@@ -1,38 +1,43 @@
 import React from 'react';
-import Logo from './logo/logo';
 import {Link} from 'react-router-dom';
+import SearchBar from './searchBar/search_bar';
+import NavAccountContainer from './nav_account_container';
 
 
-const NavBarUser = () => {
-  return (
-    <div className="main-nav">
-      <div className="main-nav-container">
-        <div className="left-nav">
-        <a href="/" className="logo">
-          <img src={window.navLogo} className='navLogo' /> 
-        </a>
-        </div>
-
-        <div className="mid-nav">
-          <div className="nav-header-text">
-            LinkedIn
+class NavBarUser extends React.Component {
+  constructor(props){
+    super(props);
+    this.state={
+      showAcc: false,
+    };
+  }
+  render(){
+    return (
+      <div className="main-nav">
+        <div className="main-nav-container">
+          <div className="left-nav-user">
+            <a href="/" className="logo">
+              <img src={window.navLogo} className='navLogo' /> 
+            </a>
           </div>
-          <div className="nav-header-text">
-            Github
+  
+          <div className="mid-nav-user">
+            <SearchBar prop={this.props}/>
           </div>
-        </div>
-
-        <div className="right-nav">
-          <Link to={'/login'}>
-            <button className="nav-login-button">Log In</button>
-          </Link>
-          <Link to={'/signup'}>
-            <button className="nav-signup-button">Sign Up</button>
-          </Link>
+  
+          <div className="right-nav right-user-nav">
+            <Link to={'/'} className="nav-home-link">Home</Link>
+            <button className="nav-user-button">Notifications</button>
+            <button onClick={() => this.setState({showAcc: true})} className={this.state.showAcc ? "nav-user-button-clicked" : "nav-user-button"}>Account</button>
+          </div>
+          <div className={this.state.showAcc ? "" : "nav-account-main-container-none" } >
+            <div className="modal" onClick={(e) => this.setState({showAcc: false})} ></div>
+            <NavAccountContainer />
+          </div>
         </div>
       </div>
-    </div>
-    );
-};
+      );
+  }
+}
 
 export default NavBarUser;

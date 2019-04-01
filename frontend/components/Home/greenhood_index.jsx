@@ -8,16 +8,14 @@ import SplashNoUser from './no_current_user/splash_no_user';
 class GreenhoodIndex extends React.Component {
 
   render(){
-    const {currentUser, logout} = this.props;
+    const {currentUser} = this.props;
     if(currentUser){
     return (
       <div>
-        <div classname="right-nav">
-        <a href="/" div className="logo">
-        <img src={window.navLogo} className='navLogo' /> greenhood </a>
-        </div>
+        <NavBarUser/>
+        <br/>
+        <br/>
         <h1>Welcome to Greenhood, {currentUser.username}! </h1>
-        <button onClick={() => logout()}>Log out</button>
       </div>
     );
     } else {
