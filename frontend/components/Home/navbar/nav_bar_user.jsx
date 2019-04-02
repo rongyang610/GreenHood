@@ -8,7 +8,7 @@ class NavBarUser extends React.Component {
   constructor(props){
     super(props);
     this.state={
-      showAcc: false,
+      showAcc: false
     };
   }
   render(){
@@ -16,9 +16,9 @@ class NavBarUser extends React.Component {
       <div className="main-nav">
         <div className="main-nav-container">
           <div className="left-nav-user">
-            <a href="/" className="logo">
+            <Link to='/' className="logo">
               <img src={window.navLogo} className='navLogo' /> 
-            </a>
+            </Link>
           </div>
   
           <div className="mid-nav-user">
@@ -31,7 +31,7 @@ class NavBarUser extends React.Component {
             <button onClick={() => this.setState({showAcc: true})} className={this.state.showAcc ? "nav-user-button-clicked" : "nav-user-button"}>Account</button>
           </div>
           <div className={this.state.showAcc ? "" : "nav-account-main-container-none" } >
-            <div className="modal" onClick={(e) => this.setState({showAcc: false})} ></div>
+            <div className="modal" onClick={() => this.setState({showAcc: false})} ></div>
             <NavAccountContainer />
           </div>
         </div>

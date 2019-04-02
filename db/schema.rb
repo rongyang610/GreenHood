@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_27_201058) do
+ActiveRecord::Schema.define(version: 2019_04_01_205652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "crypto_watchlists", force: :cascade do |t|
+    t.integer "crypto_id", null: false
+    t.integer "watchlist_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crypto_id"], name: "index_crypto_watchlists_on_crypto_id", unique: true
+    t.index ["watchlist_id"], name: "index_crypto_watchlists_on_watchlist_id", unique: true
+  end
+
+  create_table "cryptos", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "histories", force: :cascade do |t|
+    t.integer "crypto_id", null: false
+    t.float "price", null: false
+    t.date "date", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crypto_id"], name: "index_histories_on_crypto_id", unique: true
+  end
+
+  create_table "trade_histories", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "crypto_id", null: false
+    t.float "buy_price", null: false
+    t.float "sell_price", null: false
+    t.integer "crypto_amount", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crypto_id"], name: "index_trade_histories_on_crypto_id", unique: true
+    t.index ["user_id"], name: "index_trade_histories_on_user_id", unique: true
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "fname", null: false
@@ -31,6 +67,15 @@ ActiveRecord::Schema.define(version: 2019_03_27_201058) do
     t.index ["lname"], name: "index_users_on_lname", unique: true
     t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "watchlists", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "crypto_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["crypto_id"], name: "index_watchlists_on_crypto_id", unique: true
+    t.index ["user_id"], name: "index_watchlists_on_user_id", unique: true
   end
 
 end

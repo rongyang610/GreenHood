@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store'; 
+import { getChartData } from './actions/crypto_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,7 +20,10 @@ document.addEventListener('DOMContentLoaded', () => {
         store = configureStore();
     }
 
+    //testing
     window.getState = store.getState();
+    window.store = store;
+    window.getChart = getChartData;
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store} />, root);

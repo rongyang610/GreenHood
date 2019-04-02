@@ -14,12 +14,12 @@ const NavBarNoUser = () => {
         <div className="mid-nav">
           <div className="nav-header-text">
             <a href="https://www.linkedin.com/in/rong-yang-502150163/" target="_blank">
-              <i class="fab fa-linkedin"></i> LinkedIn
+              <i className="fab fa-linkedin"></i> LinkedIn
             </a>
           </div>
           <div className="nav-header-text">
             <a href="https://github.com/rongyang610" target="_blank">
-            <i class="fab fa-github"></i> Github
+            <i className="fab fa-github"></i> Github
             </a>
           </div>
         </div>
