@@ -155,32 +155,38 @@ class CryptoChart extends React.Component {
           <div className="history-type-container">
             <span 
               onClick={() => this.changeDateType("1d")} 
-              className={this.state.oneDShow ? "history-type-active" : "history-type"}>
+                className={this.state.oneDShow ? "history-type-active" : "history-type"
+              }>
               1D
             </span>
             <span 
               onClick={() => this.changeDateType("1w")} 
-              className={this.state.oneWShow ? "history-type-active" : "history-type"}>
+                className={this.state.oneWShow ? "history-type-active" : "history-type"
+              }>
               1W
             </span>
             <span 
               onClick={() => this.changeDateType("1m")} 
-              className={this.state.oneMShow ? "history-type-active" : "history-type"}>
+                className={this.state.oneMShow ? "history-type-active" : "history-type"
+              }>
               1M
             </span>
             <span 
               onClick={() => this.changeDateType("3m")} 
-              className={this.state.threeMShow ? "history-type-active" : "history-type"}>
+                className={this.state.threeMShow ? "history-type-active" : "history-type"
+              }>
               3M
             </span>
             <span 
               onClick={() => this.changeDateType("6m")} 
-              className={this.state.halfMShow ? "history-type-active" : "history-type"}>
+                className={this.state.halfMShow ? "history-type-active" : "history-type"
+              }>
               6M
             </span>
             <span 
               onClick={() => this.changeDateType("1y")} 
-              className={this.state.oneYShow ? "history-type-active" : "history-type"}>
+                className={this.state.oneYShow ? "history-type-active" : "history-type"
+              }>
               1Y
             </span>
           </div>
