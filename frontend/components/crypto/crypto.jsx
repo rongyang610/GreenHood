@@ -11,7 +11,7 @@ class Crypto extends React.Component {
         this.state = {
           sym: `${this.props.id}`,
           dateType: "1d"
-        }
+        };
     }
 
     componentDidMount(){
