@@ -66,3 +66,12 @@ body{
   top: 0;
   z-index: 1;
 }
+
+.greenhood-main-container{
+  width: 100%;
+}
+
+.greenhood-main-sub-container{
+  width: 1024px;
+  margin: 0 auto;
+}

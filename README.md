@@ -45,3 +45,6 @@ Solution: Added a sql command ".where('lower(email) = ?', email.downcase).first"
 Issue: When Account is clicked,focus, active. Modal box is shown by swapping out css.
 Solution: Created a state that had showAcc point to false. If the state of showAcc is false the class will display none otherwise it will just be an empty string. Then added a div nested within the tenary which had a class Modal. 
 
+Issue: Could not render my crypto page for a specific cryptocurrency.
+Solution: The reason I couldn't get there is because i didn't have /crypto/:sym, instead I had crypto/:sym
+

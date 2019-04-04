@@ -1,0 +1,33 @@
+.crypto-chart-container{
+  padding-top: 84px;
+  width: 691px;
+}
+
+.line-chart-main{
+  margin: 20px 0 0 -17px;
+}
+
+.history-type-container{
+  border-bottom: 1px solid #dbdbdb;
+  margin-left: 1px;
+  padding-bottom: 10px;
+}
+
+.history-type{
+  font-size: 13px;
+  padding-bottom: 9.5px;
+  margin-right: 24px;
+}
+
+.history-type:hover{
+  cursor: pointer;
+  color: #21ce99;
+}
+
+.history-type-active{
+  font-size: 13px;
+  padding-bottom: 9.5px;
+  margin-right: 24px;
+  color: #21ce99;
+  border-bottom:  2px solid #21ce99;  
+}

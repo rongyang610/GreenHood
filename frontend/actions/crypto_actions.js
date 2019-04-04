@@ -25,13 +25,25 @@ export const receiveDatas = (chart) => {
   };
 };
 
-export const getChartData = (sym, reqType, dateType) => dispatch => {
-  debugger
+export const getChartData = (sym, dateType) => dispatch => {
   return (
-    CryptoAPIUtil.fetchHistoryDatas(sym, reqType, dateType)
+    CryptoAPIUtil.fetchHistoryDatas(sym, dateType)
     .then( (chart) => {
-      debugger
       return dispatch(receiveDatas(chart));
     })
+  );
+};
+
+export const getCoinsList = () => dispatch => {
+  return (
+    CryptoAPIUtil.fetchCryptos()
+    .then ( (coins) => dispatch(receiveCoinsList(coins)))
+  );
+};
+
+export const getStats = (syms) => dispatch => {
+  return(
+    CryptoAPIUtil.fetchStats(syms)
+    .then ((stats) => dispatch(receiveStats(stats)))
   );
 };
