@@ -2,7 +2,6 @@
   display: flex;
   position:fixed;
   background-color: white;
-  justify-content: center;
   width: 100%;
   z-index: 1000;
 }
@@ -11,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   padding: 10px 0;
-  width: 1192px;
+  width: 1024px;
 }
 
 .left-nav{

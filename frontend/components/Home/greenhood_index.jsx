@@ -11,19 +11,23 @@ class GreenhoodIndex extends React.Component {
     const {currentUser} = this.props;
     if(currentUser){
     return (
-      <div>
-        <NavBarUser/>
-        <br/>
-        <br/>
-        <h1>Welcome to Greenhood, {currentUser.username}! </h1>
+      <div className="greenhood-main-container">
+        <div className="greenhood-main-sub-container">
+          <NavBarUser/>
+          <br/>
+          <br/>
+          <h1>Welcome to Greenhood, {currentUser.username}! </h1>
+        </div>
       </div>
     );
     } else {
       return (
         // .splash-no-user-main.container is located in splash_no_user.css
-        <div>
-          <NavBarNoUser />
-          <SplashNoUser />
+        <div className="greenhood-main-container">
+          <div className="greenhood-main-sub-container">
+            <NavBarNoUser />
+            <SplashNoUser />
+          </div>
         </div>
       );
     }
