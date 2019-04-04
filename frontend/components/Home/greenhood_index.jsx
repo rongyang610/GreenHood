@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import NavBarNoUser from './navbar/nav_bar_no_user';
 import NavBarUser from './navbar/nav_bar_user';
 import SplashNoUser from './no_current_user/splash_no_user';

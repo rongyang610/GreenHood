@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend } from 'recharts';
+
 import CryptoChart from './crypto_chart/crypto_chart';
 import NavBarUser from '../home/navbar/nav_bar_user';
 
@@ -12,9 +11,6 @@ class Crypto extends React.Component {
           sym: `${this.props.id}`,
           dateType: "1d"
         };
-    }
-
-    componentDidMount(){
     }
 
     render(){

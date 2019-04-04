@@ -28,7 +28,10 @@ class NavBarUser extends React.Component {
           <div className="right-nav right-user-nav">
             <Link to={'/'} className="nav-home-link">Home</Link>
             <button className="nav-user-button">Notifications</button>
-            <button onClick={() => this.setState({showAcc: true})} className={this.state.showAcc ? "nav-user-button-clicked" : "nav-user-button"}>Account</button>
+            <button onClick={() => this.setState({showAcc: true})} 
+              className={this.state.showAcc ? "nav-user-button-clicked" : "nav-user-button"}>
+              Account
+            </button>
           </div>
           <div className={this.state.showAcc ? "" : "nav-account-main-container-none" } >
             <div className="modal" onClick={() => this.setState({showAcc: false})} ></div>
