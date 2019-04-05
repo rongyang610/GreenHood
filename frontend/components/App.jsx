@@ -5,9 +5,13 @@ import LoginFormContainer from './auth/login_form_container';
 import SignupFormContainer from './auth/signup_form_container';
 import CryptoContainer from './crypto/crypto_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import NavBarContainer from './home/navbar/nav_bar_container';
 
 const App = () => (
     <div>
+        <div>
+            <NavBarContainer />
+        </div>
         <Switch>
             <Route exact path="/" component={GreenhoodIndexContainer} />
             <AuthRoute path="/login" component={LoginFormContainer} />

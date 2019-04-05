@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import SearchBar from './search_bar/search_bar';
+import SearchBarContainer from './search_bar/search_bar_container';
 import NavAccountContainer from './nav_account_container';
 
 
@@ -22,7 +22,7 @@ class NavBarUser extends React.Component {
           </div>
   
           <div className="mid-nav-user">
-            <SearchBar prop={this.props}/>
+            <SearchBarContainer prop={this.props}/>
           </div>
   
           <div className="right-nav right-user-nav">
