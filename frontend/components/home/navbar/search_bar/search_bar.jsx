@@ -52,7 +52,7 @@ class SearchBar extends React.Component {
 
     Object.values(coins).forEach((coin) => {
       coinsObj.push({
-        sym: coin.CoinName,
+        sym: coin.Symbol,
         coin: coin.CoinName
       });
     });
