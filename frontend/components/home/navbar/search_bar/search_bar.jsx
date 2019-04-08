@@ -24,7 +24,7 @@ class SearchBar extends React.Component {
   }
 
   matches(){
-    const matches = [];
+    let matches = [];
     if (this.state.searchVal.length < 1){
       return null;
     }
@@ -40,7 +40,7 @@ class SearchBar extends React.Component {
       });
     }
     if(matches.length === 0) {
-      matches.push('We are unable to find any results for your search.');
+      matches = ['We are unable to find any results for your search.'];
     }
 
     return matches.slice(0,5);
@@ -57,8 +57,6 @@ class SearchBar extends React.Component {
       });
     });
     
-    // this.props.coins.forEach( (coin) => {
-    // });
     this.setState({coinsObj});
   }
 

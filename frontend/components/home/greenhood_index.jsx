@@ -1,5 +1,6 @@
 import React from 'react';
 import SplashNoUser from './no_current_user/splash_no_user';
+import NavBarNoUser from './navbar/nav_bar_no_user';
 
 
 class GreenhoodIndex extends React.Component {
@@ -21,6 +22,7 @@ class GreenhoodIndex extends React.Component {
         // .splash-no-user-main.container is located in splash_no_user.css
         <div className="greenhood-main-container">
           <div className="greenhood-main-sub-container">
+            <NavBarNoUser />
             <SplashNoUser />
           </div>
         </div>
