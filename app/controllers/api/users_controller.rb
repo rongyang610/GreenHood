@@ -4,6 +4,10 @@ class Api::UsersController < ApplicationController
         @user.buy_power = 5000
         @user.portfolio_value = 0
         if @user.save
+            WatchlistItem.create({
+                user_id: @user.id, 
+                crypto_id: Crypto.find_by(symbol: 'BTC')
+            })
             login!(@user)
             render 'api/users/show'
         else

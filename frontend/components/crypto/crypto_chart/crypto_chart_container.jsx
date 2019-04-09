@@ -4,8 +4,6 @@ import { getChartData } from '../../../actions/crypto_actions';
 import CryptoChart from './crypto_chart';
 
 const msp = (state, ownProps) => {
-    //cryptoData: entities.crypto.data returns array
-    debugger
     return {
         dataHist: entities.cryptos.dataHistory,
         id: ownProps.match.params.sym,
