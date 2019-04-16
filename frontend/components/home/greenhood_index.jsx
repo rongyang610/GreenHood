@@ -11,9 +11,15 @@ class GreenhoodIndex extends React.Component {
     return (
       <div className="greenhood-main-container">
         <div className="greenhood-main-sub-container">
+          <div className="left-content-main-container">
           <br/>
           <br/>
           <h1>Welcome to Greenhood, {currentUser.username}! </h1>
+          </div>
+
+          <div className="right-content-main-container">
+            {/* owned stocks and watchlist here */}
+          </div>
         </div>
       </div>
     );

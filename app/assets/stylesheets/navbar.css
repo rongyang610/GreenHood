@@ -163,3 +163,17 @@
   width: 100%;
   margin-right: 5px;
 }
+
+.right-side-nav-main-container{
+  position: fixed;
+  width: 276px;
+  margin: 0 auto;
+}
+
+.right-side-nav-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}

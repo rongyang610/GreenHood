@@ -74,4 +74,17 @@ body{
 .greenhood-main-sub-container{
   width: 1024px;
   margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.left-content-main-container{
+  padding-top: 84px;
+}
+
+.right-content-main-container{
+  padding-top: 84px;
+  width: 276px;
+  position: relative;
+  background-color: yellow;
 }

@@ -4,21 +4,21 @@ export const RECEIVE_COINS_LIST = 'RECEIVE_COINS_LIST';
 export const RECEIVE_STATS = 'RECEIVE_STATS';
 export const RECEIVE_DATAS = 'RECEIVE_DATAS';
 
-export const receiveCoinsList = (coins) => {
+const receiveCoinsList = (coins) => {
   return {
     type: RECEIVE_COINS_LIST,
     coins
   };
 };
 
-export const receiveStats = (stats) => {
+const receiveStats = (stats) => {
   return {
     type: RECEIVE_STATS,
     stats
   };
 };
 
-export const receiveDatas = (chart) => {
+const receiveDatas = (chart) => {
   return {
     type: RECEIVE_DATAS,
     chart

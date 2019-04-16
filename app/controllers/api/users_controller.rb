@@ -6,7 +6,7 @@ class Api::UsersController < ApplicationController
         if @user.save
             WatchlistItem.create({
                 user_id: @user.id, 
-                crypto_id: Crypto.find_by(symbol: 'BTC')
+                crypto_sym: Crypto.find_by(symbol: 'BTC').symbol
             })
             login!(@user)
             render 'api/users/show'

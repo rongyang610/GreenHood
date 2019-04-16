@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
   
   renderErrors(){
     return this.props.errors.map((error, idx) => {
-      return <div key={idx}><i class="fas fa-exclamation-circle"></i>{error}</div>
+      return <div key={idx}><i className="fas fa-exclamation-circle"></i>{error}</div>
     });
   }
 

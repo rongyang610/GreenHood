@@ -5,3 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+Crypto.destroy_all
+User.destroy_all
+WatchlistItem.destroy_all
+crypto = Crypto.create!(symbol: 'BTC', name: 'Bitcoin')
+demoUser = User.create!(fname:'Demo', lname: 'Demo', username: 'demo', email: 'demo@gmail.com', password: 'password', portfolio_value: 0, buy_power: 5000 )
+# demoWatchlist = WatchlistItem.create!(user_id: 1, crypto_sym: 'BTC')

@@ -11,7 +11,8 @@ class User < ApplicationRecord
     has_many :watchlist_cryptos,
         through: :watchlist_items,
         source: :crypto
-    
+
+    has_many :trade_histories
 
     def password=(password)
         @password = password

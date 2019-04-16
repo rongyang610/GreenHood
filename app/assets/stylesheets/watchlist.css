@@ -1,0 +1,13 @@
+.watchlist-button{
+  color: #21ce99;
+  padding: 15px 0;
+  border: 1px solid #21ce99;
+  border-radius: 4px;
+  width: 228px;
+}
+
+.watchlist-button:hover{
+  cursor: pointer;
+  border: 1px solid #36e2ae;
+  color: #36e2ae;
+}

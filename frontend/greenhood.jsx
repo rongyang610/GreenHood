@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Root from './components/root';
 import configureStore from './store/store'; 
 import { getChartData, getCoinsList, getStats } from './actions/crypto_actions';
+import { getWatchlistItems, addWatchlistItem } from './actions/watchlist_actions';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getChart = getChartData;
     window.getCoins = getCoinsList;
     window.getStats = getStats;
+    window.getWatchlistItems = getWatchlistItems;
+    window.addWatchlistItem = addWatchlistItem;
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store} />, root);
