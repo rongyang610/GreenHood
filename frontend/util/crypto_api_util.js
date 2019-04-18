@@ -42,3 +42,9 @@ export const fetchHistoryDatas = (sym, dateType) => {
     url: `https://min-api.cryptocompare.com/data/histo${reqType}?fsym=${sym}&tsym=USD&limit=${num}&api_key=${apiKey}`
   });
 };
+
+export const getCoinPrice = (sym) => {
+  return $.ajax({
+    url: `https://min-api.cryptocompare.com/data/price?fsym=${sym}&tsyms=USD`
+  });
+};

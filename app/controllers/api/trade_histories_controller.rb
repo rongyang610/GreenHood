@@ -4,7 +4,13 @@ class Api::TradeHistoriesController < ApplicationController
   end
 
   def create
-    
+    @trade_history = TradeHistory.new(trade_histories_params)
+    @trade_history.user_id = current_user.id
+    if @trade_history.save!
+      render 'api/trade_histories/show'
+    else
+      render json: @trade_history.errors.full_messages
+    end
   end
 
   private

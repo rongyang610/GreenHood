@@ -9,7 +9,6 @@ class Watchlist extends React.Component {
     } 
 
     componentDidMount(){
-      debugger
       this.props.getWatchlistItems(this.props.userId);
     }
 

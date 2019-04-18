@@ -52,6 +52,17 @@ a, button, li, ul, ol{
 }
 /*----------------------------------------------*/
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+
 body{
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
@@ -85,6 +96,6 @@ body{
 .right-content-main-container{
   padding-top: 84px;
   width: 276px;
+  height: 800px;
   position: relative;
-  background-color: yellow;
 }

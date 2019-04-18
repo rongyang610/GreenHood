@@ -167,6 +167,7 @@
 .right-side-nav-main-container{
   position: fixed;
   width: 276px;
+  height: 100%;
   margin: 0 auto;
 }
 
