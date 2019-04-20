@@ -18,6 +18,7 @@ export const getTradeHistories = userId => dispatch => {
 };
 
 export const addTradeHistory = trade => dispatch => {
+  debugger
   return (
     TradeHistoryAPIUtil.createTradeHistory(trade)
   );

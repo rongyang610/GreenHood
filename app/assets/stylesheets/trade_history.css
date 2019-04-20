@@ -1,6 +1,7 @@
 .trade-history-main-container{
   width: 276px;
   box-shadow: 0px 0px 10px #888888;
+  margin-bottom: 20px;
 }
 
 .buy-sell-title{
@@ -16,16 +17,30 @@
   margin-left: 25px;
   padding: 15px 0 10px 0;
 }
+
+.buy-title:hover{
+  cursor: pointer;
+}
+
 .buy-title-active{
   display: inline-block;
   margin-left: 25px;
   padding: 15px 0 10px 0;
   border-bottom: 3px solid #21ce99;
 }
+
+.buy-title-active:hover{
+  cursor: pointer;
+}
+
 .sell-title{
   display: inline-block;
   margin-left: 25px;
   padding: 15px 0 10px 0;
+}
+
+.sell-title:hover{
+  cursor: pointer;
 }
 
 .sell-title-active{
@@ -33,6 +48,10 @@
   margin-left: 25px;
   padding: 15px 0 10px 0;
   border-bottom: 3px solid #21ce99;
+}
+
+.sell-title-active:hover{
+  cursor: pointer;
 }
 
 .buy-sell-form-component{
@@ -52,6 +71,16 @@
   width: 75px;
   text-align: right;
   padding: 10px 5px;
+  outline: none;
+  border-radius: 4px;
+  box-shadow: none;
+  border: 1px solid #ebe9e9;
+  /* background-color: #ebe9e9; */
+}
+
+.buy-form-input:focus {
+  border: 1px solid #21ce99;
+  border-radius: 4px;
 }
 
 .buy-sell-market-price{
@@ -78,11 +107,20 @@
   border-radius: 4px;
   width: 228px;
   margin-bottom: 20px;
-  border-bottom: 1px solid #ebe9e9;
 }
 
 .buy-sell-button:hover{
   cursor: pointer;
   border: 1px solid #36e2ae;
-  color: #36e2ae;
+  background-color: #5bf3c5;
+}
+
+.buy-sell-buy-power{
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #ebe9e9;
+}
+
+.buy-sell-buy-power-text{
+  padding: 15px 0;
 }

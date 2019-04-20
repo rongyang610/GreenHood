@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
     def create
         @user = User.new(user_params)
-        @user.buy_power = 5000
+        @user.buy_power = 5000.00
         @user.portfolio_value = 0
         if @user.save
             WatchlistItem.create({

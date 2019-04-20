@@ -43,7 +43,7 @@ export const fetchHistoryDatas = (sym, dateType) => {
   });
 };
 
-export const getCoinPrice = (sym) => {
+export const fetchCoinPrice = (sym) => {
   return $.ajax({
     url: `https://min-api.cryptocompare.com/data/price?fsym=${sym}&tsyms=USD`
   });

@@ -9,5 +9,5 @@ Crypto.destroy_all
 User.destroy_all
 WatchlistItem.destroy_all
 crypto = Crypto.create!(symbol: 'BTC', name: 'Bitcoin')
-demoUser = User.create!(fname:'Demo', lname: 'Demo', username: 'demo', email: 'demo@gmail.com', password: 'password', portfolio_value: 0, buy_power: 5000 )
+demoUser = User.create!(fname:'Demo', lname: 'Demo', username: 'demo', email: 'demo@gmail.com', password: 'password', portfolio_value: 0.00, buy_power: 5000.00 )
 # demoWatchlist = WatchlistItem.create!(user_id: 1, crypto_sym: 'BTC')

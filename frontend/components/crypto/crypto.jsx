@@ -15,7 +15,6 @@ class Crypto extends React.Component {
     }
 
     render(){
-      let userId = this.props.userId;
       return(
         <div className="greenhood-main-sub-container">
           <div className="left-content-main-container">
@@ -33,9 +32,11 @@ class Crypto extends React.Component {
                 <div>
                   <BuySellPanel
                     addTradeHist={this.props.addTradeHist}
+                    coinPrice={this.props.coinPrice}
                     userId={this.props.userId}
-                    userInfo={this.props.user[userId]}
+                    userBuyPower={this.props.userBuyPower}
                     sym={this.props.id}
+                    getCoinPrice={this.props.getCoinPrice}
                   />
                 </div>
                 <Watchlist
