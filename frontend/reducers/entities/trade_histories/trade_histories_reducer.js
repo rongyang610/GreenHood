@@ -3,10 +3,9 @@ import { merge } from 'lodash';
 
 const tradeHistoryReducer = (state=[], action) => {
   Object.freeze(state);
-  debugger
-  switch (action.key) {
+  switch (action.type) {
     case RECEIVE_TRADE_HISTORIES:
-      return merge([], state, Object.values(action.trade));
+      return Object.assign([], state, Object.values(action.trade));
     default:
       return state;
   }

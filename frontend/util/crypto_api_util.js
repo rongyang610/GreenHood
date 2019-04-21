@@ -34,6 +34,9 @@ export const fetchHistoryDatas = (sym, dateType) => {
   } else if(dateType === "6m"){
     num = "183";
     reqType= "day";
+  } else if (dateType === "home"){
+    num = "30";
+    reqType="day";
   } else{
     num = "365";
     reqType= "day";
