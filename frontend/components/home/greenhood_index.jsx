@@ -18,6 +18,7 @@ class GreenhoodIndex extends React.Component {
   componentDidMount(){
     this.props.getTradeHistories(this.state.userId)
     .then(() => this.pushCoins());
+    // .then(() => this.changeTradesToEpoch());
   }
 
   pushCoins(){
@@ -63,7 +64,8 @@ class GreenhoodIndex extends React.Component {
           <h1>Welcome to Greenhood, {currentUser.username}! </h1>
             <PortfolioChart
               syms={this.state.syms}
-              trades={this.state.ownedCoins}
+              ownedCoins={this.state.ownedCoins}
+              trades={this.props.trades}
               tradeHist={this.props.trades}
               histData={this.props.histData}
               getHistData={this.props.getChartData}
