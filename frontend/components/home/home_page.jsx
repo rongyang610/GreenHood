@@ -58,7 +58,7 @@ class UserHomePage extends React.Component {
     <div className="greenhood-main-container">
         <div className="greenhood-main-sub-container">
           <div className="left-content-main-container">
-          <h1>Welcome to Greenhood, {currentUser.username}! </h1>
+          <h2>Welcome to Greenhood a cryptocurrency clone of Robinhood! </h2>
             <PortfolioChart
               coinsPrice={this.props.coinsPrice}
               syms={this.state.syms}

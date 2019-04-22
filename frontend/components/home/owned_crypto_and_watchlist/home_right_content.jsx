@@ -19,7 +19,6 @@ class OwnedStocksAndWatchlist extends React.Component{
 
   render(){
     const {ownedCoins, coinsPrice} = this.props;
-    debugger
     let result = (ownedCoins.length !==0 && this.state.ownedCoinsData && this.state.coinsPriceData) ? ownedCoins.map( (obj, idx) => {
       let sym = Object.keys(obj)[0];
       let shares = Object.values(obj)[0];
@@ -27,7 +26,9 @@ class OwnedStocksAndWatchlist extends React.Component{
         let currentPrice = coinsPrice[sym]['USD'];
         let totalCoinValue = parseFloat(Math.round(currentPrice * shares * 100)/100).toFixed(2);
         let newTotal = parseFloat(totalCoinValue).toLocaleString().split('.');
-        if (newTotal[1].length < 2){
+        if (!newTotal[1]){
+          newTotal.push('00');
+        } else if (newTotal[1].length < 2){
           newTotal[1] += '0';
         }
         newTotal = newTotal.join('.'); 
@@ -55,6 +56,9 @@ class OwnedStocksAndWatchlist extends React.Component{
     }) : null;
     return (
       <div className="owned-crypto-main-container">
+        <div className="cryptocurrency-title">
+          Cryptocurrencies
+        </div>
         {result}
       </div>
     )

@@ -87,7 +87,7 @@ class SearchBar extends React.Component {
         <input 
           className="search-bar-style" 
           type="text" 
-          placeholder="Search.."
+          placeholder="Search Cryptocurrencies.."
           value={this.state.searchVal}
           onChange={this.handleInput}
         />
