@@ -19,7 +19,8 @@ class OwnedStocksAndWatchlist extends React.Component{
 
   render(){
     const {ownedCoins, coinsPrice} = this.props;
-    let result = (this.state.ownedCoinsData && this.state.coinsPriceData) ? ownedCoins.map( (obj, idx) => {
+    debugger
+    let result = (ownedCoins.length !==0 && this.state.ownedCoinsData && this.state.coinsPriceData) ? ownedCoins.map( (obj, idx) => {
       let sym = Object.keys(obj)[0];
       let shares = Object.values(obj)[0];
       if(obj[sym] != 0){

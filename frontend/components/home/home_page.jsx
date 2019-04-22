@@ -7,7 +7,7 @@ class UserHomePage extends React.Component {
     super(props);
     this.state = {
       userId: this.props.currentUser.id,
-      ownedCoins: {},
+      ownedCoins: [],
       syms: [],
     };
   }

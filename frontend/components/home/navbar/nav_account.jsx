@@ -33,7 +33,7 @@ class NavAccount extends React.Component {
               </div>
             </div>
           </div>
-          <div className="nav-account-container nav-account-second-section-container">
+          {/* <div className="nav-account-container nav-account-second-section-container">
             <div className="nav-account-component">
               <i className="fas fa-gift"></i> Free Crypto
             </div>
@@ -57,7 +57,7 @@ class NavAccount extends React.Component {
             <div className="nav-account-component">
               <i className="fas fa-bars"></i> Disclosures
             </div>
-          </div>
+          </div> */}
           <div className="nav-account-container nav-account-fourth-section-container">
               <button onClick={() => logout()} className="nav-account-component"><i className="fas fa-sign-out-alt"></i> Log Out</button>
           </div>
