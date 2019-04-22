@@ -99,3 +99,7 @@ body{
   height: 800px;
   position: relative;
 }
+
+.display-none{
+  display:none;
+}

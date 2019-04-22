@@ -69,6 +69,7 @@ class UserHomePage extends React.Component {
               getHistData={this.props.getChartData}
               currentUser={currentUser}
             />
+            <h2>Recent News</h2>
           </div>
 
           <div className="right-content-main-container">
