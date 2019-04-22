@@ -7,13 +7,25 @@ class BuySellPanel extends React.Component{
       buyPage: true,
       sellPage: false,
       buyAmount: '',
-      sellAmount: ''
+      sellAmount: '',
     };
     this.postTransaction = this.postTransaction.bind(this);
   }
 
   componentDidMount(){
     this.props.getCoinPrice(this.props.sym);
+  }
+
+  componentDidUpdate(prevProps){
+    if (prevProps.sym != this.props.sym){
+      this.props.getCoinPrice(this.props.sym)
+      .then(() => this.setState({
+        buyPage: true,
+        sellPage: false,
+        buyAmount: '',
+        sellAmount: ''
+      }));
+    }
   }
 
   update(field){
@@ -28,7 +40,7 @@ class BuySellPanel extends React.Component{
 
   postTransaction(e){
     e.preventDefault();
-    if(this.state.buyAmount !== 0){
+    if(this.state.buyAmount !== ""){
       this.props.addTradeHist({
         user_id: this.props.userId, 
         crypto_sym: this.props.sym, 
@@ -36,13 +48,13 @@ class BuySellPanel extends React.Component{
         buy_price: (this.state.buyAmount * this.props.coinPrice['USD']),
         sell_price: 0
       });
-    } else if (this.state.sellAmount !== 0){
+    } else if (this.state.sellAmount !== ""){
       this.props.addTradeHist({
         user_id: this.props.userId, 
         crypto_sym: this.props.sym, 
         crypto_amount: Math.floor(this.state.sellAmount),
         buy_price: 0,
-        sell_price: (-this.state.sellAmount * this.props.coinPrice['USD'])
+        sell_price: (this.state.sellAmount * this.props.coinPrice['USD'])
       });
     }
     this.setState({buyAmount: '', sellAmount: ''});
@@ -70,7 +82,7 @@ class BuySellPanel extends React.Component{
           <div className="market-price-value">${parseFloat(Math.round(this.props.coinPrice['USD'] * 100)/100).toFixed(2)}</div>
         </div>
         <div className="buy-sell-form-component buy-sell-estimated-cost">
-          <div>Estimated Credit</div>
+          <div>Estimated Cost</div>
           <div>${parseFloat(Math.round(Math.floor(this.state.buyAmount) * this.props.coinPrice['USD'] * 100) / 100).toFixed(2)}</div>
         </div>
         <center>
@@ -107,7 +119,7 @@ class BuySellPanel extends React.Component{
             <div className="market-price-value">${parseFloat(Math.round(this.props.coinPrice['USD'] * 100) / 100).toFixed(2)}</div>
           </div>
           <div className="buy-sell-form-component buy-sell-estimated-cost">
-            <div>Estimated Return</div>
+            <div>Estimated Credit</div>
             <div>${parseFloat(Math.round(Math.floor(this.state.sellAmount) * this.props.coinPrice['USD'] * 100) / 100).toFixed(2)}</div>
           </div>
           <center>

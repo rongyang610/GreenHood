@@ -35,7 +35,7 @@ export const fetchHistoryDatas = (sym, dateType) => {
     num = "183";
     reqType= "day";
   } else if (dateType === "home"){
-    num = "30";
+    num = "28";
     reqType="day";
   } else{
     num = "365";
@@ -48,6 +48,12 @@ export const fetchHistoryDatas = (sym, dateType) => {
 
 export const fetchCoinPrice = (sym) => {
   return $.ajax({
-    url: `https://min-api.cryptocompare.com/data/price?fsym=${sym}&tsyms=USD`
+    url: `https://min-api.cryptocompare.com/data/price?fsym=${sym}&tsyms=USD&api_key=${apiKey}`
+  });
+};
+
+export const fetchMultCoinsPrice=(syms) => {
+  return $.ajax({
+    url: `https://min-api.cryptocompare.com/data/pricemulti?fsyms=${syms}&tsyms=USD&api_key=${apiKey}`
   });
 };
