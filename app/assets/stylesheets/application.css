@@ -67,6 +67,12 @@ body{
   font-family: 'Roboto', sans-serif;
   font-size: 15px;
   margin: 0;
+  padding: 0;
+  color: white;
+}
+
+html{
+  height: 100%;
 }
 
 .modal{
@@ -102,4 +108,16 @@ body{
 
 .display-none{
   display:none;
+}
+
+.background-color{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-image: linear-gradient(#030D20, #093537);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  z-index: -1;
 }

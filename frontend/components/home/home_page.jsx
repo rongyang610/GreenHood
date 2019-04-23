@@ -56,6 +56,9 @@ class UserHomePage extends React.Component {
     const {currentUser} = this.props;
     return(
     <div className="greenhood-main-container">
+      <div className="background-color">
+        
+      </div>
         <div className="greenhood-main-sub-container">
           <div className="left-content-main-container">
           <h2>Welcome to Greenhood a cryptocurrency clone of Robinhood! </h2>
@@ -74,7 +77,7 @@ class UserHomePage extends React.Component {
 
           <div className="right-content-main-container">
             <div className="right-side-nav-main-container">
-              <div className="right-side-nav-container">
+              <div className="right-side-nav-container-home">
                 {/* owned stocks and watchlist here */}
                 <SideBar
                   ownedCoins={this.state.ownedCoins}

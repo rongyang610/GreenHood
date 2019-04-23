@@ -30,7 +30,7 @@ class NavAccount extends React.Component {
                 <div className="port-buy-text">
                   Buying Power
                 </div>
-              </div>
+              </div> 
             </div>
           </div>
           {/* <div className="nav-account-container nav-account-second-section-container">

@@ -24,14 +24,14 @@ class OwnedStocksAndWatchlist extends React.Component{
       let shares = Object.values(obj)[0];
       if(obj[sym] != 0){
         let currentPrice = coinsPrice[sym]['USD'];
-        let totalCoinValue = parseFloat(Math.round(currentPrice * shares * 100)/100).toFixed(2);
-        let newTotal = parseFloat(totalCoinValue).toLocaleString().split('.');
-        if (!newTotal[1]){
-          newTotal.push('00');
-        } else if (newTotal[1].length < 2){
-          newTotal[1] += '0';
+        let coinValue = parseFloat(Math.round(currentPrice * 100)/100).toFixed(2);
+        let newCoinValue = parseFloat(coinValue).toLocaleString().split('.');
+        if (!newCoinValue[1]){
+          newCoinValue.push('00');
+        } else if (newCoinValue[1].length < 2){
+          newCoinValue[1] += '0';
         }
-        newTotal = newTotal.join('.'); 
+        newCoinValue = newCoinValue.join('.'); 
         return( 
         <Link key={idx} to={`/crypto/${sym}`}>
           <div className="owned-crypto-components-container">
@@ -47,7 +47,7 @@ class OwnedStocksAndWatchlist extends React.Component{
               {/* the graph goes here */}
             </div>
             <div className="owned-crypto-right-component">
-              ${newTotal}
+              ${newCoinValue}
             </div>
           </div>
         </Link>

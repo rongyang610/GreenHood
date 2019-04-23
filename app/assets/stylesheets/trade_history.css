@@ -65,6 +65,7 @@
 
 .buy-form-input::placeholder {
   text-align: right;
+  color: #6e6c6c;
 }
 
 .buy-form-input {
@@ -74,8 +75,9 @@
   outline: none;
   border-radius: 4px;
   box-shadow: none;
-  border: 1px solid #ebe9e9;
-  /* background-color: #ebe9e9; */
+  color:white;
+  border: 1px solid white;
+  background-color: transparent;
 }
 
 .buy-form-input:focus {
@@ -92,7 +94,7 @@
 }
 
 .market-price-value{
-  color: black;
+  color: white;
 }
 
 .buy-sell-estimated-cost{

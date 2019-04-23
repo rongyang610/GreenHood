@@ -7,6 +7,7 @@ class CryptoChart extends React.Component {
         super(props);
         this.state = {
           dateType: this.props.dateType,
+          mounted: false,
           oneDShow: true,
           oneWShow: false,
           oneMShow: false,
@@ -18,7 +19,8 @@ class CryptoChart extends React.Component {
     }
 
     componentDidMount(){
-      this.props.getChartData(this.props.sym, this.props.dateType);
+      this.props.getChartData(this.props.sym, this.props.dateType)
+      .then(() => this.setState({mounted: true}));
     }
 
     componentDidUpdate(prevProps, prevState){
@@ -97,6 +99,36 @@ class CryptoChart extends React.Component {
       }
     }
 
+    CustomTooltip (content){
+      let date, price;
+      const {dataHist} = this.props;
+      const {mounted} = this.state;
+      if (content.payload && content.payload.length > 0){
+        price = parseFloat(content.payload[0].payload["USD"]).toLocaleString().split('.');
+        if (!price[1]){
+          price.push('00');
+        } else if (price[1].length < 2){
+          price[1] += '0';
+        }
+        price = price.join('.');
+        document.getElementById("coin-value").innerHTML = "$"+price;
+        
+        date = content.payload[0].payload['name'];
+        return(
+          <div className="tooltip">{date}</div>
+        )
+      } else if (dataHist.length > 0 && mounted){
+        price = parseFloat(dataHist[dataHist.length - 1]['close']).toLocaleString().split('.');
+        if (!price[1]){
+          price.push('00');
+        } else if (price[1].length < 2){
+          price[1] += '0';
+        }
+        price = price.join('.');
+        document.getElementById("coin-value").innerHTML = "$"+price;
+      }
+    };
+
     epochToReadable(data){
       let epochToHuman = new Date(data.time*1000);
       if (this.state.dateType === "1d"){
@@ -119,6 +151,7 @@ class CryptoChart extends React.Component {
     }
 
     render(){
+      debugger
       let dataHistory = [];
       let that = this;  
       this.props.dataHist.forEach( data => {
@@ -128,7 +161,7 @@ class CryptoChart extends React.Component {
       });
       return(
         <div className="crypto-chart-container">
-          <div>{this.props.sym}</div>
+          <div id="coin-value"></div>
           <LineChart width={676} height={196} data={dataHistory} className="line-chart-main"
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <XAxis 
@@ -147,6 +180,7 @@ class CryptoChart extends React.Component {
                 backgroundColor: 'transparent', 
                 fontSize: '12px'}
               }
+              content = {this.CustomTooltip.bind(this)}
               offset={-45}
               position={{y: -23}}
             />

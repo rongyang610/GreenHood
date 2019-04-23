@@ -1,7 +1,6 @@
 import React from 'react';
 import { LineChart, Line, XAxis, YAxis, Tooltip } from 'recharts';
 
-
 class PortfolioChart extends React.Component {
   constructor(props){
     super(props);
@@ -102,9 +101,10 @@ class PortfolioChart extends React.Component {
         for (let idy = 0; idy < syms.length; idy++) {
           prices += (ownedCoins[idy][syms[idy]] * currentPrices[[syms[idy]]]);
         }
+        debugger
       } else{
         let l = changingTradeHist.length;
-        for ( let idx = l - 1; idx !== 0; idx--) {
+        for ( let idx = l - 1; idx !== -1; idx--) {
           if(changingTradeHist[idx]["created_at"] > currentDate){
             if (changingTradeHist[idx]['buy_price'] > 0) {
               ownedCoins.forEach((ownedCoinsObj) => {
@@ -125,16 +125,47 @@ class PortfolioChart extends React.Component {
         for (let idy = 0; idy < syms.length; idy++) {
           prices += (ownedCoins[idy][syms[idy]] * coinsDataHist[idy][syms[idy]][i-1].close);
         }
+        debugger
       }
       const dateString = new Date(currentDate).toLocaleString('en-US', {month: 'short', day: 'numeric', year:'numeric'});
-      
       obj['name'] = dateString;
       obj['USD'] = parseFloat(Math.round(prices * 100)/100).toFixed(2);
+      debugger
       dataPoints.unshift(obj);
       currentDate -= (86400*1000);
     }
+    debugger
     return dataPoints;
   }
+
+  CustomTooltip (content){
+    let date, price;
+    const {dataPoints} = this.state
+    if (content.payload && content.payload.length > 0){
+      price = parseFloat(content.payload[0].payload["USD"]).toLocaleString().split('.');
+      if (!price[1]){
+        price.push('00');
+      } else if (price[1].length < 2){
+        price[1] += '0';
+      }
+      price = price.join('.');
+      document.getElementById("portfolio-value").innerHTML = "$"+price;
+      
+      date = content.payload[0].payload['name'];
+      return(
+        <div className="tooltip">{date}</div>
+      )
+    } else if (dataPoints){
+      price = parseFloat(dataPoints[dataPoints.length - 1].USD).toLocaleString().split('.');
+      if (!price[1]){
+        price.push('00');
+      } else if (price[1].length < 2){
+        price[1] += '0';
+      }
+      price = price.join('.');
+      document.getElementById("portfolio-value").innerHTML = "$"+price;
+    }
+  };
 
   userCreatedEpoch(){
     const {currentUser} = this.props;
@@ -167,27 +198,42 @@ class PortfolioChart extends React.Component {
   }
 
   render(){
-    // let tradeHistories = Array.from(this.state.tradeHist);
     let dataPoints = this.state.dataPoints ? this.state.dataPoints : null;
-    // tradeHistories.map((tradeObj) => {
-
-    // });
+    let min;
+    if(dataPoints){
+      for (let i = 0; i < dataPoints.length; i++) {
+        if (i === 0){
+          min = parseFloat(dataPoints[i]['USD']);
+        } else{
+          const maybeMin = parseFloat(dataPoints[i]['USD']);
+          if (min > maybeMin){
+            min = maybeMin;
+          }
+        }
+      }
+    }
     return (
       <div className="crypto-chart-container">
-          <div>Portfolio Value:</div>
-          <LineChart width={676} height={196} data={dataPoints} className="line-chart-main"
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+          <div id="portfolio-value">Portfolio Value</div>
+          <LineChart width={676} 
+            height={196} 
+            data={dataPoints} 
+            className="line-chart-main"
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+          >
+
             <XAxis 
               dataKey="name" 
               hide={true}
             />
             <YAxis 
               dataKey="USD" 
-              domain={['dataMin', 'dataMax']} 
+              domain={[min, 'dataMax']} 
               hide={true}
             />
             <Tooltip 
               isAnimationActive={false}
+              content={this.CustomTooltip.bind(this)}
               contentStyle = {
                 {border: 'none', 
                 backgroundColor: 'transparent', 
@@ -196,7 +242,7 @@ class PortfolioChart extends React.Component {
               offset={-45}
               position={{y: -23}}
             />
-            <Line type="monotone" dataKey="USD" stroke="#21ce99" dot={false} />
+            <Line type="monotone" dataKey="USD" stroke="white" strokeWidth="2.5" dot={false} />
           </LineChart>
           <div className="history-type-container">
             {/* <span 
