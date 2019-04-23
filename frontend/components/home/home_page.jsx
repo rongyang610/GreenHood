@@ -56,38 +56,36 @@ class UserHomePage extends React.Component {
     const {currentUser} = this.props;
     return(
     <div className="greenhood-main-container">
-      <div className="background-color">
-        
-      </div>
-        <div className="greenhood-main-sub-container">
-          <div className="left-content-main-container">
-          <h2>Welcome to Greenhood a cryptocurrency clone of Robinhood! </h2>
-            <PortfolioChart
-              coinsPrice={this.props.coinsPrice}
-              syms={this.state.syms}
-              ownedCoins={this.state.ownedCoins}
-              trades={this.props.trades}
-              tradeHist={this.props.trades}
-              histData={this.props.histData}
-              getHistData={this.props.getChartData}
-              currentUser={currentUser}
-            />
-            <h2>Recent News</h2>
-          </div>
+      <div className="greenhood-main-sub-container">
+        <div className="left-content-main-container">
+        <h2>Welcome to Greenhood a cryptocurrency clone of Robinhood! </h2>
+          <PortfolioChart
+            coinsPrice={this.props.coinsPrice}
+            syms={this.state.syms}
+            ownedCoins={this.state.ownedCoins}
+            trades={this.props.trades}
+            tradeHist={this.props.trades}
+            histData={this.props.histData}
+            getHistData={this.props.getChartData}
+            currentUser={currentUser}
+          />
+          <h2 className="top-movers-title">Top Movers</h2>
+          <h2 className="news-title">Recent News</h2>
+        </div>
 
-          <div className="right-content-main-container">
-            <div className="right-side-nav-main-container">
-              <div className="right-side-nav-container-home">
-                {/* owned stocks and watchlist here */}
-                <SideBar
-                  ownedCoins={this.state.ownedCoins}
-                  coinsPrice={this.props.coinsPrice}
-                />
-              </div>
+        <div className="right-content-main-container">
+          <div className="right-side-nav-main-container">
+            <div className="right-side-nav-container-home">
+              {/* owned stocks and watchlist here */}
+              <SideBar
+                ownedCoins={this.state.ownedCoins}
+                coinsPrice={this.props.coinsPrice}
+              />
             </div>
           </div>
         </div>
       </div>
+    </div>
     )
   }
 }

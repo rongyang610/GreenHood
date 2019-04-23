@@ -91,7 +91,7 @@ class PortfolioChart extends React.Component {
     for (let i = 0; i < syms.length; i++) {
       currentPrices[syms[i]] = coinsPrice[syms[i]]['USD'];
     }
-    const dataPoints=[];
+    const dataPoints=[]; 
     const changingTradeHist = Array.from(tradeHist);
     const ownedCoins = Array.from(this.props.ownedCoins);
     for (let i = 30; i !== 0; i--) {
@@ -101,7 +101,6 @@ class PortfolioChart extends React.Component {
         for (let idy = 0; idy < syms.length; idy++) {
           prices += (ownedCoins[idy][syms[idy]] * currentPrices[[syms[idy]]]);
         }
-        debugger
       } else{
         let l = changingTradeHist.length;
         for ( let idx = l - 1; idx !== -1; idx--) {
@@ -125,16 +124,13 @@ class PortfolioChart extends React.Component {
         for (let idy = 0; idy < syms.length; idy++) {
           prices += (ownedCoins[idy][syms[idy]] * coinsDataHist[idy][syms[idy]][i-1].close);
         }
-        debugger
       }
       const dateString = new Date(currentDate).toLocaleString('en-US', {month: 'short', day: 'numeric', year:'numeric'});
       obj['name'] = dateString;
       obj['USD'] = parseFloat(Math.round(prices * 100)/100).toFixed(2);
-      debugger
       dataPoints.unshift(obj);
       currentDate -= (86400*1000);
     }
-    debugger
     return dataPoints;
   }
 
@@ -153,7 +149,7 @@ class PortfolioChart extends React.Component {
       
       date = content.payload[0].payload['name'];
       return(
-        <div className="tooltip">{date}</div>
+        <div className="tooltipDate">{date}</div>
       )
     } else if (dataPoints){
       price = parseFloat(dataPoints[dataPoints.length - 1].USD).toLocaleString().split('.');
@@ -214,7 +210,7 @@ class PortfolioChart extends React.Component {
     }
     return (
       <div className="crypto-chart-container">
-          <div id="portfolio-value">Portfolio Value</div>
+          <h2 id="portfolio-value">Portfolio Value</h2>
           <LineChart width={676} 
             height={196} 
             data={dataPoints} 
