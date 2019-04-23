@@ -1,12 +1,14 @@
-import {RECEIVE_TRADE_HISTORIES} from '../../../actions/trade_histories_actions';
+import {RECEIVE_ALL_NEWS, RECEIVE_NEWS} from '../../../actions/news_actions';
 import { merge } from 'lodash';
 import { LOGOUT_CURRENT_USER } from '../../../actions/session_actions';
 
 const tradeHistoryReducer = (state=[], action) => {
   Object.freeze(state);
   switch (action.type) {
-    case RECEIVE_TRADE_HISTORIES:
-      return Object.assign([], state, Object.values(action.trade));
+    case RECEIVE_ALL_NEWS:
+      return merge([], Object.values(action.news));
+    case RECEIVE_NEWS:
+      return merge([], Object.values(action.news));
     case LOGOUT_CURRENT_USER:
       return [];
     default:

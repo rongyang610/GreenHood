@@ -1,6 +1,7 @@
 import React from 'react';
 import SideBar from './owned_crypto_and_watchlist/home_right_content';
 import PortfolioChart from './Portfolio/portfolio_chart';
+import News from './news/all_news';
 
 class UserHomePage extends React.Component {
   constructor(props){
@@ -14,7 +15,10 @@ class UserHomePage extends React.Component {
 
   componentDidMount(){
     this.props.getTradeHistories(this.state.userId)
-    .then(() => this.pushCoins());
+    .then(() => {
+      debugger
+      return this.pushCoins();
+    });
   }
 
   pushCoins(){
@@ -70,7 +74,12 @@ class UserHomePage extends React.Component {
             currentUser={currentUser}
           />
           <h2 className="top-movers-title">Top Movers</h2>
-          <h2 className="news-title">Recent News</h2>
+          <h2 className="news-header-title">Recent News</h2>
+          <News
+            news={this.props.news}
+            getAllNews={this.props.getAllNews}
+            symbols={this.state.syms}
+          />
         </div>
 
         <div className="right-content-main-container">
