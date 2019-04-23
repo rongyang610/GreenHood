@@ -9,7 +9,8 @@ const entitiesReducer = combineReducers ({
     users: usersReducer,
     cryptos: cryptosReducer,
     watchlist: watchlistReducer,
-    tradeHist: tradeHistoryReducer
+    tradeHist: tradeHistoryReducer,
+    news: newsReducer
 });
 
 export default entitiesReducer;

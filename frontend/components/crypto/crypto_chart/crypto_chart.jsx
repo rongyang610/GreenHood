@@ -27,7 +27,16 @@ class CryptoChart extends React.Component {
       if(prevProps.sym !== this.props.sym){
         this.props.getChartData(this.props.sym, this.props.dateType);
         this.setState(() => {
-          return {dateType: '1d'};
+          return {
+            dateType: '1d',
+            mounted: false,
+            oneDShow: true,
+            oneWShow: false,
+            oneMShow: false,
+            threeMShow: false,
+            halfMShow: false,
+            oneYShow: false
+          };
         });
       } 
       else if (prevState.dateType !== this.state.dateType){
