@@ -16,7 +16,6 @@ class UserHomePage extends React.Component {
   componentDidMount(){
     this.props.getTradeHistories(this.state.userId)
     .then(() => {
-      debugger
       return this.pushCoins();
     });
   }

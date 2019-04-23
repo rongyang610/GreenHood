@@ -4,7 +4,6 @@ export const RECEIVE_TRADE_HISTORIES = 'RECEIVE_TRADE_HISTORIES';
 export const CREATE_TRADE_HISTORY = 'CREATE_TRADE_HISTORY';
 
 const receiveTradeHistories = trade => {
-  debugger
   return {
     type: RECEIVE_TRADE_HISTORIES,
     trade

@@ -134,7 +134,7 @@ class PortfolioChart extends React.Component {
     return dataPoints;
   }
 
-  CustomTooltip (content){
+  customTooltip (content){
     let date, price;
     const {dataPoints} = this.state
     if (content.payload && content.payload.length > 0){
@@ -229,7 +229,7 @@ class PortfolioChart extends React.Component {
             />
             <Tooltip 
               isAnimationActive={false}
-              content={this.CustomTooltip.bind(this)}
+              content={this.customTooltip.bind(this)}
               contentStyle = {
                 {border: 'none', 
                 backgroundColor: 'transparent', 

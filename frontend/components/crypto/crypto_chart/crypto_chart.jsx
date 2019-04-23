@@ -24,6 +24,7 @@ class CryptoChart extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState){
+      debugger
       if(prevProps.sym !== this.props.sym){
         this.props.getChartData(this.props.sym, this.props.dateType);
         this.setState(() => {
@@ -108,7 +109,7 @@ class CryptoChart extends React.Component {
       }
     }
 
-    CustomTooltip (content){
+    customTooltip (content){
       let date, price;
       const {dataHist} = this.props;
       const {mounted} = this.state;
@@ -124,7 +125,7 @@ class CryptoChart extends React.Component {
         
         date = content.payload[0].payload['name'];
         return(
-          <div className="tooltip">{date}</div>
+          <div className="tooltipDate">{date}</div>
         )
       } else if (dataHist.length > 0 && mounted){
         price = parseFloat(dataHist[dataHist.length - 1]['close']).toLocaleString().split('.');
@@ -189,7 +190,7 @@ class CryptoChart extends React.Component {
                 backgroundColor: 'transparent', 
                 fontSize: '12px'}
               }
-              content = {this.CustomTooltip.bind(this)}
+              content = {this.customTooltip.bind(this)}
               offset={-45}
               position={{y: -23}}
             />
