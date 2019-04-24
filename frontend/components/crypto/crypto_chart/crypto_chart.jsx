@@ -20,11 +20,11 @@ class CryptoChart extends React.Component {
 
     componentDidMount(){
       this.props.getChartData(this.props.sym, this.props.dateType)
+      .then(() => this.props.getCoinInfo(this.props.sym))
       .then(() => this.setState({mounted: true}));
     }
 
     componentDidUpdate(prevProps, prevState){
-      debugger
       if(prevProps.sym !== this.props.sym){
         this.props.getChartData(this.props.sym, this.props.dateType);
         this.setState(() => {
@@ -110,11 +110,39 @@ class CryptoChart extends React.Component {
     }
 
     customTooltip (content){
-      let date, price;
+      let date, price, closePrice, openPrice, diffPrice, diffRatio, dayToYr;
+      let posNegSign = '+';
+      const {oneDShow, oneWShow, oneMShow, threeMShow, halfMShow} = this.state;
       const {dataHist} = this.props;
       const {mounted} = this.state;
       if (content.payload && content.payload.length > 0){
-        price = parseFloat(content.payload[0].payload["USD"]).toLocaleString().split('.');
+        openPrice = dataHist[0].open;
+        closePrice = content.payload[0].payload['USD'];
+        diffPrice = closePrice - openPrice;
+        diffRatio = (diffPrice/openPrice)* 100;
+
+        if (diffPrice < 0){
+          posNegSign = '-';
+          diffPrice *= -1;
+        }
+
+        diffPrice = parseFloat(diffPrice.toFixed(2)).toLocaleString().split('.');
+        if (!diffPrice[1]){
+          diffPrice.push('00');
+        } else if (diffPrice[1].length < 2){
+          diffPrice[1] += '0';
+        }
+        diffPrice = diffPrice.join('.');
+
+        diffRatio = parseFloat(diffRatio.toFixed(2)).toLocaleString().split('.');
+        if (!diffRatio[1]){
+          diffRatio.push('00');
+        } else if (diffRatio[1].length < 2){
+          diffRatio[1] += '0';
+        }
+        diffRatio = diffRatio.join('.');
+
+        price = parseFloat(closePrice).toLocaleString().split('.');
         if (!price[1]){
           price.push('00');
         } else if (price[1].length < 2){
@@ -122,19 +150,64 @@ class CryptoChart extends React.Component {
         }
         price = price.join('.');
         document.getElementById("coin-value").innerHTML = "$"+price;
-        
+        document.getElementById('coin-over-time').innerHTML = '';
+        document.getElementById("coin-percentage").innerHTML = `${posNegSign}$${diffPrice} [${diffRatio}%]`;
+
         date = content.payload[0].payload['name'];
         return(
           <div className="tooltipDate">{date}</div>
         )
       } else if (dataHist.length > 0 && mounted){
-        price = parseFloat(dataHist[dataHist.length - 1]['close']).toLocaleString().split('.');
+        if(oneDShow){
+          dayToYr = "TODAY";
+        } else if(oneWShow){
+          dayToYr = "PAST WEEK";
+        } else if (oneMShow){
+          dayToYr = "PAST MONTH";
+        } else if (threeMShow){
+          dayToYr = "PAST 3 MONTHS";
+        } else if (halfMShow){
+          dayToYr = "PAST 6 MONTHS";
+        } else{
+          dayToYr = "PAST YEAR";
+        }
+
+
+        closePrice = dataHist[dataHist.length - 1].open;
+        openPrice = dataHist[0].close;
+        diffPrice = closePrice - openPrice;
+        diffRatio = (diffPrice/openPrice)* 100;
+
+        if (diffPrice < 0){
+          posNegSign = '-'
+          diffPrice *= -1;
+        }
+        diffPrice = parseFloat(diffPrice.toFixed(2)).toLocaleString().split('.');
+        if (!diffPrice[1]){
+          diffPrice.push('00');
+        } else if (diffPrice[1].length < 2){
+          diffPrice[1] += '0';
+        }
+        diffPrice = diffPrice.join('.');
+
+        diffRatio = parseFloat(diffRatio.toFixed(2)).toLocaleString().split('.');
+        if (!diffRatio[1]){
+          diffRatio.push('00');
+        } else if (diffRatio[1].length < 2){
+          diffRatio[1] += '0';
+        }
+        diffRatio = diffRatio.join('.');
+
+        price = parseFloat(closePrice).toLocaleString().split('.');
         if (!price[1]){
           price.push('00');
         } else if (price[1].length < 2){
           price[1] += '0';
         }
-        price = price.join('.');
+        price = price.join('.');        
+
+        document.getElementById('coin-over-time').innerHTML = dayToYr;
+        document.getElementById("coin-percentage").innerHTML = `${posNegSign}$${diffPrice} [${diffRatio}%]`;
         document.getElementById("coin-value").innerHTML = "$"+price;
       }
     };
@@ -161,7 +234,6 @@ class CryptoChart extends React.Component {
     }
 
     render(){
-      debugger
       let dataHistory = [];
       let that = this;  
       this.props.dataHist.forEach( data => {
@@ -169,9 +241,16 @@ class CryptoChart extends React.Component {
           dataHistory.push(that.epochToReadable(data));
         }
       });
+
+      let name = this.state.mounted ? this.props.coinInfo.FullName : null
       return(
         <div className="crypto-chart-container">
+          <h2 className="crypto-chart-name">{name}</h2>
           <div id="coin-value"></div>
+          <div className="third-component-crypto-chart">
+            <div id="coin-percentage"></div>
+            <div id="coin-over-time"></div>
+          </div>
           <LineChart width={676} height={196} data={dataHistory} className="line-chart-main"
             margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
             <XAxis 
@@ -194,7 +273,7 @@ class CryptoChart extends React.Component {
               offset={-45}
               position={{y: -23}}
             />
-            <Line type="monotone" dataKey="USD" stroke="#21ce99" dot={false} />
+            <Line type="monotone" dataKey="USD" stroke="#21ce99" strokeWidth="2.5" dot={false} />
           </LineChart>
           <div className="history-type-container">
             <span 

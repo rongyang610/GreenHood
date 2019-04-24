@@ -14,7 +14,7 @@
 
 .buy-title{
   display: inline-block;
-  margin-left: 25px;
+  margin-left: 20px;
   padding: 15px 0 10px 0;
 }
 
@@ -24,7 +24,7 @@
 
 .buy-title-active{
   display: inline-block;
-  margin-left: 25px;
+  margin-left: 20px;
   padding: 15px 0 10px 0;
   border-bottom: 3px solid #21ce99;
 }

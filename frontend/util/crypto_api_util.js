@@ -7,6 +7,13 @@ export const fetchCryptos = () => {
   });
 };
 
+//get general information of coin
+export const fetchCryptoInfo = (sym) => {
+  return $.ajax ({
+    url: `https://min-api.cryptocompare.com/data/coin/generalinfo?fsyms=${sym}&tsym=USD&api_key=${apiKey}`
+  });
+};
+
 //syms = BTC,ETH,DASH,PHR*
 //need to add apiKey (&api_key=${apiKey})
 //current: PRICE, CHANGE24HOUR, CHANGEPCT24HOUR, CHANGEPCTDAY

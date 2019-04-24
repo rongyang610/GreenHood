@@ -4,13 +4,15 @@ import statsReducer from './data/stats_reducer';
 import coinPriceReducer from './data/coin_price_reducer';
 import coinsPriceReducer from './data/coins_price_reducer';
 import dataHistoryReducer from './data/data_history_reducer';
+import coinInfoReducer from './data/coin_info_reducer';
 
 const cryptosReducer = combineReducers ({
     coins: coinsReducer,
     stats: statsReducer,
     coinPrice: coinPriceReducer,
     coinsPrice: coinsPriceReducer,
-    dataHistory: dataHistoryReducer
+    dataHistory: dataHistoryReducer,
+    coinInfo: coinInfoReducer
 });
 
 export default cryptosReducer;

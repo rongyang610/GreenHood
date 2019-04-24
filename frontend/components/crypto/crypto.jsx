@@ -25,7 +25,8 @@ class Crypto extends React.Component {
                 sym={this.props.id} 
                 getChartData={this.props.getChartData}
                 dateType={'1d'}
-                coins={this.props.coins}
+                coinInfo={this.props.coinInfo}
+                getCoinInfo={this.props.getCoinInfo}
               />
             </div>
             <div className="right-content-main-container">

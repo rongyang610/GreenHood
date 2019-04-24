@@ -3,7 +3,7 @@
 }
 
 .line-chart-main{
-  margin: 20px 0 0 -17px;
+  margin: 30px 0 0 -17px;
 }
 
 .history-type-container{
@@ -33,4 +33,26 @@
 
 .tooltipDate{
   font-size: 12px;
+}
+
+.crypto-chart-name{
+  margin: 0;
+}
+
+#coin-value{
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+.third-component-crypto-chart{
+  display: flex;
+  font-size: 12px;
+}
+
+#coin-percentage{
+  margin-right: 5px;
+}
+
+#coin-over-time{
+  color: #8c8c8e;
 }

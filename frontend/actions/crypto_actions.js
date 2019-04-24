@@ -1,6 +1,7 @@
 import * as CryptoAPIUtil from '../util/crypto_api_util';
 
 export const RECEIVE_COINS_LIST = 'RECEIVE_COINS_LIST';
+export const RECEIVE_COIN_INFO = 'RECEIVE_COIN_INFO';
 export const RECEIVE_STATS = 'RECEIVE_STATS';
 export const RECEIVE_DATAS = 'RECEIVE_DATAS';
 export const RECEIVE_COIN_PRICE = 'RECEIVE_COIN_PRICE';
@@ -10,6 +11,13 @@ const receiveCoinsList = (coins) => {
   return {
     type: RECEIVE_COINS_LIST,
     coins
+  };
+};
+
+const receiveCoinInfo = (coinInfo) => {
+  return {
+    type: RECEIVE_COIN_INFO,
+    coinInfo
   };
 };
 
@@ -75,5 +83,12 @@ export const getMultCoinsPrice= (syms) => dispatch => {
   return(
     CryptoAPIUtil.fetchMultCoinsPrice(syms)
     .then((coinsPrice) => dispatch(receiveMultCoinPrice(coinsPrice)))
+  );
+};
+
+export const getCoinInfo = (sym) => dispatch => {
+  return(
+    CryptoAPIUtil.fetchCryptoInfo(sym)
+    .then((coinInfo) => dispatch(receiveCoinInfo(coinInfo)))
   );
 };
