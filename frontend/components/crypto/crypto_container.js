@@ -4,6 +4,7 @@ import {getCoinsList, getChartData, getStats, getCoinPrice, getCoinInfo} from '.
 import { getWatchlistItems, addWatchlistItem, removeWatchlistItem } from '../../actions/watchlist_actions';
 import Crypto from './crypto';
 import { addTradeHistory } from '../../actions/trade_histories_actions';
+import {getNews} from '../../actions/news_actions';
 
 const msp = ({entities, session}, ownProps) => {
     //cryptoData: entities.crypto.data returns array
@@ -27,6 +28,7 @@ const mdp = dispatch => {
         getCoinsList: () => dispatch(getCoinsList()),
         getCoinPrice: (sym) => dispatch(getCoinPrice(sym)),
         getCoinInfo: sym => dispatch(getCoinInfo(sym)),
+        getNews: sym => dispatch(getNews(sym)),
         getStats: (syms) => dispatch(getStats(syms)),
         addTradeHist: (trade) => dispatch(addTradeHistory(trade)),
         getWatchlistItems: (userId) => dispatch(getWatchlistItems(userId)),

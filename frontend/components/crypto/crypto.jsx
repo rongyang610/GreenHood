@@ -2,7 +2,7 @@ import React from 'react';
 import CryptoChart from './crypto_chart/crypto_chart';
 import Watchlist from '../watchlist/watchlist';
 import BuySellPanel from '../trade_history/buy_sell_panel';
-
+import News from './news/crypto_news';
 
 
 class Crypto extends React.Component {
@@ -12,6 +12,10 @@ class Crypto extends React.Component {
           sym: `${this.props.id}`,
           dateType: "1d"
         };
+    }
+
+    componentDidMount(){
+      this.props.getNews(this.props.id);
     }
 
     render(){
@@ -27,6 +31,11 @@ class Crypto extends React.Component {
                 dateType={'1d'}
                 coinInfo={this.props.coinInfo}
                 getCoinInfo={this.props.getCoinInfo}
+              />
+              <div className="news-header-title">Recent News</div>
+              <News
+                news={this.props.news}
+                symbols={this.state.syms}
               />
             </div>
             <div className="right-content-main-container">
