@@ -19,6 +19,7 @@ const msp = ({entities, session}, ownProps) => {
         userId: entities.users[session.id].id,
         userBuyPower: entities.users[session.id].buy_power,
         id: ownProps.match.params.sym,
+        news: entities.news
     };
 };
 

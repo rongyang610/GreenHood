@@ -32,7 +32,7 @@ class Crypto extends React.Component {
                 coinInfo={this.props.coinInfo}
                 getCoinInfo={this.props.getCoinInfo}
               />
-              <div className="news-header-title">Recent News</div>
+              <h2 className="news-header-title">Recent News</h2>
               <News
                 news={this.props.news}
                 symbols={this.state.syms}

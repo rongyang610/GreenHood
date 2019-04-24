@@ -10,6 +10,6 @@ export const fetchAllNews = (syms) => {
 
 export const fetchNews = (sym) => {
   return $.ajax({
-    url: `https://newsapi.org/v2/everything?q=${sym}&apiKey=620a6eaefef54d27acc8c6e534c5fcb3`
+    url: `https://newsapi.org/v2/everything?q=${sym}&language=en&apiKey=620a6eaefef54d27acc8c6e534c5fcb3`
   });
 };

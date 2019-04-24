@@ -241,7 +241,9 @@ class CryptoChart extends React.Component {
           dataHistory.push(that.epochToReadable(data));
         }
       });
-
+      debugger
+      let strokeColor = dataHistory.length > 0 ? (parseFloat(dataHistory[0]['USD']) > parseFloat(dataHistory[dataHistory.length - 1]['USD']) ? '#F45531' : '#21ce99') : '';
+      debugger
       let name = this.state.mounted ? this.props.coinInfo.FullName : null
       return(
         <div className="crypto-chart-container">
@@ -273,7 +275,7 @@ class CryptoChart extends React.Component {
               offset={-45}
               position={{y: -23}}
             />
-            <Line type="monotone" dataKey="USD" stroke="#21ce99" strokeWidth="2.5" dot={false} />
+            <Line type="monotone" dataKey="USD" stroke={strokeColor} strokeWidth="2.5" dot={false} />
           </LineChart>
           <div className="history-type-container">
             <span 

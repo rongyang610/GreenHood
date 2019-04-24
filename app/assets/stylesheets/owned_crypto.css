@@ -1,8 +1,16 @@
 .cryptocurrency-title{
   font-size: 17px;
-  padding: 17px 20px;
+  padding: 15px 20px;
   font-weight: 700;
   border-bottom: 1px solid #ebe9e9;
+}
+
+.watchlist-title{
+  font-size: 17px;
+  padding: 15px 20px;
+  font-weight: 700;
+  border-bottom: 1px solid #ebe9e9;
+  border-top: 1px solid #ebe9e9;
 }
 
 .owned-crypto-main-container{
@@ -16,7 +24,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 20px;
+  padding: 17px 20px;
   font-size: 12px;
 }
 

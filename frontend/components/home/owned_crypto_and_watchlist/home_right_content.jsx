@@ -60,6 +60,9 @@ class OwnedStocksAndWatchlist extends React.PureComponent{
           Cryptocurrencies
         </div>
         {result}
+        <div className="watchlist-title">
+          Watchlist
+        </div>
       </div>
     )
   }
