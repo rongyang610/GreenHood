@@ -56,3 +56,13 @@
 #coin-over-time{
   color: #8c8c8e;
 }
+
+#portfolio-value{
+  font-size: 20px;
+  margin: 5px 0;
+}
+
+#portfolio-percentage{
+  font-size: 12px;
+  margin-right: 5px;
+}

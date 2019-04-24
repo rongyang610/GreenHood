@@ -72,7 +72,7 @@ class UserHomePage extends React.Component {
             getHistData={this.props.getChartData}
             currentUser={currentUser}
           />
-          <h2 className="top-movers-title">Top Movers</h2>
+          {/* <h2 className="top-movers-title">Top Movers</h2> */}
           <h2 className="news-header-title">Recent News</h2>
           <News
             news={this.props.news}

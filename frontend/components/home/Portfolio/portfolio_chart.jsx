@@ -17,7 +17,7 @@ class PortfolioChart extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-    if (prevProps.ownedCoins.length !== this.props.ownedCoins.length){
+    if(prevProps.ownedCoins.length !== this.props.ownedCoins.length){
       //that context this so in the for loop can get the state
       const that = this; 
       if (this.state.coinsDataHist.length === 0) {
@@ -135,14 +135,21 @@ class PortfolioChart extends React.Component {
   }
 
   customTooltip (content){
-    let date, price, closePrice, openPrice, diffPrice, diffRatio, dayToYr;
+    let date, price, closePrice, openPrice, diffPrice, diffRatio, dayToYr, zero;
     let posNegSign = '+';    
     const {dataPoints} = this.state;
     if (content.payload && content.payload.length > 0){
       openPrice = parseFloat(dataPoints[0]['USD']);
       closePrice = parseFloat(content.payload[0].payload['USD']);
-      diffPrice = closePrice - openPrice;
-      diffRatio = (diffPrice/openPrice)* 100;
+
+      if(openPrice <= 0){
+        zero = 0.01;
+      } else{
+        zero = openPrice;
+      }
+
+      diffPrice = closePrice - zero;
+      diffRatio = (diffPrice/zero)* 100;
 
       if (diffPrice < 0){
         posNegSign = '-';
@@ -165,13 +172,17 @@ class PortfolioChart extends React.Component {
       }
       diffRatio = diffRatio.join('.');
 
-      debugger 
-
       price = parseFloat(closePrice).toLocaleString().split('.');
       if (!price[1]){
         price.push('00');
       } else if (price[1].length < 2){
         price[1] += '0';
+      }
+
+      if(openPrice === closePrice){
+        diffPrice = '0.00';
+        diffRatio = '0.00';
+        posNegSign ='';
       }
       price = price.join('.');
       document.getElementById("portfolio-value").innerHTML = "$"+price;
@@ -182,6 +193,34 @@ class PortfolioChart extends React.Component {
         <div className="tooltipDate">{date}</div>
       )
     } else if (dataPoints){
+      openPrice = parseFloat(dataPoints[0]['USD']);
+      closePrice = parseFloat(dataPoints[dataPoints.length - 1]['USD']);
+
+      if(openPrice <= 0){
+        zero = 0.01;
+      } else{
+        zero = openPrice;
+      }
+
+      diffPrice = closePrice - zero;
+      diffRatio = (diffPrice/zero)* 100;
+
+      diffPrice = parseFloat(diffPrice.toFixed(2)).toLocaleString().split('.');
+      if (!diffPrice[1]){
+        diffPrice.push('00');
+      } else if (diffPrice[1].length < 2){
+        diffPrice[1] += '0';
+      }
+      diffPrice = diffPrice.join('.');
+
+      diffRatio = parseFloat(diffRatio.toFixed(2)).toLocaleString().split('.');
+      if (!diffRatio[1]){
+        diffRatio.push('00');
+      } else if (diffRatio[1].length < 2){
+        diffRatio[1] += '0';
+      }
+      diffRatio = diffRatio.join('.');
+
       price = parseFloat(dataPoints[dataPoints.length - 1].USD).toLocaleString().split('.');
       if (!price[1]){
         price.push('00');
@@ -190,6 +229,7 @@ class PortfolioChart extends React.Component {
       }
       price = price.join('.');
       document.getElementById("portfolio-value").innerHTML = "$"+price;
+      document.getElementById("portfolio-percentage").innerHTML = `${posNegSign}$${diffPrice} [${diffRatio}%]`;
     }
   };
 
@@ -241,8 +281,8 @@ class PortfolioChart extends React.Component {
     let strokeColor = dataPoints ? (parseFloat(dataPoints[0]['USD']) > parseFloat(dataPoints[dataPoints.length - 1]['USD']) ? '#F45531' : '#21ce99') : '';
     return (
       <div className="crypto-chart-container">
-          <h2 id="portfolio-value">Portfolio Value</h2>
-          <h3 id="portfolio-percentage"></h3>
+          <div id="portfolio-value">Portfolio Value</div>
+          <div id="portfolio-percentage"></div>
           <LineChart width={676} 
             height={196} 
             data={dataPoints} 

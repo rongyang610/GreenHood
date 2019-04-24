@@ -31,7 +31,7 @@ class OwnedStocksAndWatchlist extends React.PureComponent{
         } else if (newCoinValue[1].length < 2){
           newCoinValue[1] += '0';
         }
-        newCoinValue = newCoinValue.join('.'); 
+        newCoinValue = newCoinValue.join('.');
         return( 
         <Link key={idx} to={`/crypto/${sym}`}>
           <div className="owned-crypto-components-container">
