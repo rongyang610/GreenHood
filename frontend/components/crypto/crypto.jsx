@@ -52,14 +52,14 @@ class Crypto extends React.Component {
                       getCoinPrice={this.props.getCoinPrice}
                     />
                   </div>
-                  <Watchlist
+                  {/* <Watchlist
                     watchlist={this.props.watchlist}
                     userId={this.props.userId}
                     getWatchlistItems={this.props.getWatchlistItems}
                     addWatchlistItem={this.props.addWatchlistItem}
                     removeWatchlistItem={this.props.removeWatchlistItem}
                     sym={this.props.id}
-                  />
+                  /> */}
                 </div>
               </div>
             </div>

@@ -130,7 +130,7 @@ class BuySellPanel extends React.Component{
         </form>
         <div className="buy-sell-buy-power">
           <div className="buy-sell-buy-power-text">
-            ${this.props.userBuyPower} Shares
+            Shares
           </div>
         </div>
       </>
