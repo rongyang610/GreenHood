@@ -1,11 +1,10 @@
-import { RECEIVE_DATAS } from '../../../../actions/crypto_actions';
-import { merge } from 'lodash';
+import { RECEIVE_MULT_DATAS } from '../../../../actions/crypto_actions';
 
 export default (state=[], action) => {
     Object.freeze(state);
     switch (action.type) {
-        case RECEIVE_DATAS:
-            return merge([], action.chart.Data);
+        case RECEIVE_MULT_DATAS:
+            return merge([], state, action.chart.Data);
         case LOGOUT_CURRENT_USER:
             return [];
         default:

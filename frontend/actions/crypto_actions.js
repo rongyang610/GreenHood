@@ -4,6 +4,7 @@ export const RECEIVE_COINS_LIST = 'RECEIVE_COINS_LIST';
 export const RECEIVE_COIN_INFO = 'RECEIVE_COIN_INFO';
 export const RECEIVE_STATS = 'RECEIVE_STATS';
 export const RECEIVE_DATAS = 'RECEIVE_DATAS';
+export const RECEIVE_MULT_DATAS = 'RECEIVE_MULT_DATAS';
 export const RECEIVE_COIN_PRICE = 'RECEIVE_COIN_PRICE';
 export const RECEIVE_MULT_COINS_PRICE = 'RECEIVE_MULT_COINS_PRICE';
 
@@ -35,6 +36,13 @@ const receiveDatas = (chart) => {
   };
 };
 
+const receiveMultDatas = (chart) => {
+  return {
+    type: RECEIVE_MULT_DATAS,
+    chart
+  };
+};
+
 const receiveCoinPrice = (coinPrice) => {
   return {
     type: RECEIVE_COIN_PRICE,
@@ -54,6 +62,15 @@ export const getChartData = (sym, dateType) => dispatch => {
     CryptoAPIUtil.fetchHistoryDatas(sym, dateType)
     .then( (chart) => {
       return dispatch(receiveDatas(chart));
+    })
+  );
+};
+
+export const getMultChartData = (sym, dateType) => dispatch => {
+  return (
+    CryptoAPIUtil.fetchHistoryDatas(sym, dateType)
+    .then( (chart) => {
+      return dispatch(receiveMultDatas(chart));
     })
   );
 };

@@ -5,6 +5,7 @@ import coinPriceReducer from './data/coin_price_reducer';
 import coinsPriceReducer from './data/coins_price_reducer';
 import dataHistoryReducer from './data/data_history_reducer';
 import coinInfoReducer from './data/coin_info_reducer';
+import multDataHistoryReducer from './data/mult_data_history_reducer';
 
 const cryptosReducer = combineReducers ({
     coins: coinsReducer,
@@ -12,6 +13,7 @@ const cryptosReducer = combineReducers ({
     coinPrice: coinPriceReducer,
     coinsPrice: coinsPriceReducer,
     dataHistory: dataHistoryReducer,
+    multDataHistory: multDataHistoryReducer,
     coinInfo: coinInfoReducer
 });
 

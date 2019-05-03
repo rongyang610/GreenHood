@@ -8,8 +8,6 @@ class PortfolioChart extends React.Component {
       coinsDataHist: [],
       tradeHist: [],
       dataPoints: -0,
-      looped: false,
-      dataCalled: false,
       dataReturned: false,
       calculatedDataPoints: false,
       offSet: (new Date().getTimezoneOffset())/60
@@ -19,24 +17,21 @@ class PortfolioChart extends React.Component {
   componentDidUpdate(prevProps){
     if(prevProps.ownedCoins.length !== this.props.ownedCoins.length){
       //that context this so in the for loop can get the state
-      const that = this; 
       if (this.state.coinsDataHist.length === 0) {
         this.changeTradesDatesToEpochAndSetDataHist();
       }
     } else if (this.state.coinsDataHist.length !== 0){
-      if(this.state.coinsDataHist[this.props.syms.length - 1][this.props.syms[this.props.syms.length - 1]].length === 0 && 
-      this.state.looped === false){
+      if(this.state.coinsDataHist[this.props.syms.length - 1][this.props.syms[this.props.syms.length - 1]].length === 0){
         const that = this;
         for (let i = 0; i < that.props.syms.length; i++) {
           that.props.getHistData(that.props.syms[i], 'home')
           .then((data) => {
+            //don't set state because mutating coinsDataHist with stateArr shallow dup
             const stateArr = that.state.coinsDataHist[i];
             const sym = that.props.syms[i];
             stateArr[sym] = data.chart.Data;
-            that.setState({dataCalled: true});
           });
         }
-        this.setState({looped: true});
       } else if(this.state.dataReturned === false){
         this.waitForAPICall();
       } else if(this.state.dataReturned && !this.state.calculatedDataPoints){
