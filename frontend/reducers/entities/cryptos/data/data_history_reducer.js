@@ -1,5 +1,6 @@
 import { RECEIVE_DATAS } from '../../../../actions/crypto_actions';
 import { merge } from 'lodash';
+import { LOGOUT_CURRENT_USER } from '../../../../actions/session_actions';
 
 export default (state=[], action) => {
     Object.freeze(state);

@@ -22,13 +22,12 @@ class PortfolioChart extends React.Component {
       }
     } else if (this.state.coinsDataHist.length !== 0){
       if(this.state.coinsDataHist[this.props.syms.length - 1][this.props.syms[this.props.syms.length - 1]].length === 0){
-        const that = this;
-        for (let i = 0; i < that.props.syms.length; i++) {
-          that.props.getHistData(that.props.syms[i], 'home')
+        for (let i = 0; i < this.props.syms.length; i++) {
+          this.props.getHistData(this.props.syms[i], 'home')
           .then((data) => {
             //don't set state because mutating coinsDataHist with stateArr shallow dup
-            const stateArr = that.state.coinsDataHist[i];
-            const sym = that.props.syms[i];
+            const stateArr = this.state.coinsDataHist[i];
+            const sym = this.props.syms[i];
             stateArr[sym] = data.chart.Data;
           });
         }
