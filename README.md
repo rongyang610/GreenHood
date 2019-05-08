@@ -1,50 +1,66 @@
-# README
-Hello welcome to GreenHood github :).
+# Greenhood
 
-## ABOUT
-GreenHood, a Robinhood clone, is an online platform that allows an individual to invest in cryptocurrency without paying fees or commissions.
+[Live Site](https://green-hood.herokuapp.com)
 
-## APIS 
-### Coin Graphs
-https://min-api.cryptocompare.com/
-http://recharts.org/en-US/
+Greenhood, a Robinhood clone, is an online platform that allows an individual to invest in cryptocurrency without paying fees or commissions.
 
-### Cryptocurrency News
-google news
+## Table of contents
+* [Technologies](#technologies)
+* [Coin Chart Creation](#coin-chart-creation)
+* [Future Plans](#future-plans)
 
-### Logo
-Use green arrow logos
-Considering:
-https://www.google.com/url?sa=i&source=images&cd=&cad=rja&uact=8&ved=2ahUKEwigweHxu6LhAhXsct8KHacCC50QjRx6BAgBEAU&url=https%3A%2F%2Fwww.pinterest.com%2Fpin%2F417286721711738709%2F&psig=AOvVaw3f-1igpPhTizrhFE-V-j1V&ust=1553781008607302
+## Technologies
 
-http://www.polleverywhere.co/green-arrow-logo/green-arrow-logo-green-arrow-art-emblem-arrow-t-shirt-teepublic/
+* Ruby on Rails
+* React
+* Redux
+* JavaScript
+* PostgreSQL
+* AJAX
+* CryptoCompare API
+* Google News API
+* Recharts API
 
+## Coin Chart Creation
 
-###Bugs
-Issue: Page was rendering errors from prev page.
-Solution: Wrote a action creator clearError to clear the error when it renders to a new page.
+Through CryptoCompare API and Recharts API, users are able to view a chart for a specific coin. This chart allows the user to hover over any part of the chart to show the price and date of a specific datapoint.
 
-Issue: Couldn't upload to heroku because of jpg.
-Solution: had named my logo logo.jpeg instead of logo.jpg
+```javascript
+  componentDidMount(){
+    this.props.getChartData(this.props.sym, this.props.dateType)
+    .then(() => this.props.getCoinInfo(this.props.sym))
+    .then(() => this.setState({mounted: true}));
+  }
+  
+  <LineChart width={676} height={196} data={dataHistory} className="line-chart-main"
+    margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
+    <XAxis 
+      dataKey="name" 
+      hide={true}
+    />
+    <YAxis 
+      dataKey="USD" 
+      domain={['dataMin', 'dataMax']} 
+      hide={true}
+    />
+    <Tooltip 
+      isAnimationActive={false}
+      contentStyle = {
+        {border: 'none', 
+        backgroundColor: 'transparent', 
+        fontSize: '12px'}
+      }
+      content = {this.customTooltip.bind(this)}
+      offset={-45}
+      position={{y: -23}}
+    />
+    <Line type="monotone" dataKey="USD" stroke={strokeColor} strokeWidth="2.5" dot={false} />
+  </LineChart>
+```
 
-Issue: Navbar was not being 100% width of parent width.
-Solution: changed 100% to inherit.
+![Display](/app/assets/images/coin_chart.png)
 
-Issue: Navbar was not lining up with contents.
-Solution: Created 2 div containers. main container is 100% of screen. And then set the 2nd container to be 1200px that way it will be identical to robinhood.
+## Future Plans
 
-Issue: Navbar mid-nav when put flex-start it would cover my logo.
-Solution: To fix this issue I gave my logo class a margin-right of 70px to get the right positions.
-
-Issue: Couldn't allow user to log in as user or email. It would only take email or only accept username.
-Solution: Created a find_by_credentials_email. Then in sessions_controller i allowed the variable to = username or email
-
-Issue: I wanted the database to store the username and email as the way they typed it.
-Solution: Added a sql command ".where('lower(email) = ?', email.downcase).first". This avoided making 2 columns in the database
-
-Issue: When Account is clicked,focus, active. Modal box is shown by swapping out css.
-Solution: Created a state that had showAcc point to false. If the state of showAcc is false the class will display none otherwise it will just be an empty string. Then added a div nested within the tenary which had a class Modal. 
-
-Issue: Could not render my crypto page for a specific cryptocurrency.
-Solution: The reason I couldn't get there is because i didn't have /crypto/:sym, instead I had crypto/:sym
-
+* Watchlist - Allows the user to add coins to a watchlist that shows up on their dashboard
+* Validation - Make sure the user has enough coins to sell or have enough buy power to buy coins.
