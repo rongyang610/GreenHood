@@ -15,6 +15,15 @@ class Api::UsersController < ApplicationController
         end
     end
 
+    def update
+        @user = User.find(params[:id])
+        if (@user) && (current_user.id == @user.id) && (@user.update(buying_power: params[:buyingPower]))
+           render 'api/users/show'
+        else
+            render json: @user.errors.full_messages, status: 406
+        end
+    end
+
     private
     def user_params
         params.require(:user).permit(:username, :email, :fname, :lname, :password)
