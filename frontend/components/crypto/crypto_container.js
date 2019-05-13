@@ -1,10 +1,10 @@
 
-import {connect} from 'react-redux';
-import {getCoinsList, getChartData, getStats, getCoinPrice, getCoinInfo} from '../../actions/crypto_actions';
+import { connect } from 'react-redux';
+import { getCoinsList, getChartData, getStats, getCoinPrice, getCoinInfo } from '../../actions/crypto_actions';
 import { getWatchlistItems, addWatchlistItem, removeWatchlistItem } from '../../actions/watchlist_actions';
 import Crypto from './crypto';
 import { addTradeHistory } from '../../actions/trade_histories_actions';
-import {getNews} from '../../actions/news_actions';
+import { getNews } from '../../actions/news_actions';
 
 const msp = ({entities, session}, ownProps) => {
     //cryptoData: entities.crypto.data returns array

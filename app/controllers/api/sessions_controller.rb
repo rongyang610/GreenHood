@@ -6,6 +6,14 @@ class Api::SessionsController < ApplicationController
                 params[:user][:email],
                 params[:user][:password])
         if @user
+            @ownedCoins = Hash.new(0)
+            @user.trade_histories.each do |trade|
+                if trade.buy_price != 0
+                    @ownedCoins[trade.crypto_sym] += 1
+                elsif trade.sell_price != 0
+                    @ownedCoins[trade.crypto_sym] -= 1
+                end
+            end
             login!(@user)
             render 'api/users/show'
         else

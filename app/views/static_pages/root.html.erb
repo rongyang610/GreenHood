@@ -1,8 +1,18 @@
 <% if logged_in? %>
     <script type="text/javascript">
-    window.currentUser = <%= render(
+    window.currentUser = <%= 
+    ownedCoins = Hash.new(0)
+    current_user.trade_histories.each do |trade|
+        if trade.buy_price != 0
+            ownedCoins[trade.crypto_sym] += 1
+        elsif trade.sell_price != 0
+            ownedCoins[trade.crypto_sym] -= 1
+        end
+    end
+    render(
         "api/users/user.json.jbuilder",
-        user: current_user
+        user: current_user,
+        owned: ownedCoins
     ).html_safe %></script>
 <% end %>
 

@@ -241,9 +241,7 @@ class CryptoChart extends React.Component {
           dataHistory.push(that.epochToReadable(data));
         }
       });
-      debugger
       let strokeColor = dataHistory.length > 0 ? (parseFloat(dataHistory[0]['USD']) > parseFloat(dataHistory[dataHistory.length - 1]['USD']) ? '#F45531' : '#21ce99') : '';
-      debugger
       let name = this.state.mounted ? this.props.coinInfo.FullName : null
       return(
         <div className="crypto-chart-container">
