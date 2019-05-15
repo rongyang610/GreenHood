@@ -63,4 +63,3 @@ Through CryptoCompare API and Recharts API, users are able to view a chart for a
 ## Future Plans
 
 * Watchlist - Allows the user to add coins to a watchlist that shows up on their dashboard
-* Validation - Make sure the user has enough coins to sell or have enough buy power to buy coins.
