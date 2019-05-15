@@ -1,7 +1,7 @@
 import React from 'react';
 import CryptoChart from './crypto_chart/crypto_chart';
 import Watchlist from '../watchlist/watchlist';
-import BuySellPanel from '../trade_history/buy_sell_panel';
+import BuySellPanelContainer from '../trade_history/buy_sell_panel_container';
 import News from './news/crypto_news';
 
 
@@ -43,14 +43,7 @@ class Crypto extends React.Component {
                 <div className="right-side-nav-container">
                   {/* watchlist and buy values are here */}
                   <div>
-                    <BuySellPanel
-                      addTradeHist={this.props.addTradeHist}
-                      coinPrice={this.props.coinPrice}
-                      userId={this.props.userId}
-                      userBuyPower={this.props.userBuyPower}
-                      sym={this.props.id}
-                      getCoinPrice={this.props.getCoinPrice}
-                    />
+                    <BuySellPanelContainer sym={this.props.id}/>
                   </div>
                   {/* <Watchlist
                     watchlist={this.props.watchlist}

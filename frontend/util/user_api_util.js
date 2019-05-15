@@ -5,3 +5,9 @@ export const patchUser = (id, buyingPower) => {
     data: {buyingPower},
   });
 };
+
+export const getUser = (id) => {
+  return $.ajax({
+    url: `/api/users/${id}`
+  });
+};

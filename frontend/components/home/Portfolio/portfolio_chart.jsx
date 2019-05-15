@@ -98,34 +98,41 @@ class PortfolioChart extends React.Component {
       } else{
         let l = changingTradeHist.length;
         for ( let idx = l - 1; idx !== -1; idx--) {
-          if(changingTradeHist[idx]["created_at"] > currentDate){
-            if (changingTradeHist[idx]['buy_price'] > 0) {
-              ownedCoins.forEach((ownedCoinsObj) => {
-                if (ownedCoinsObj[changingTradeHist[idx]['crypto_sym']] !== undefined){
-                  ownedCoinsObj[changingTradeHist[idx]['crypto_sym']] -= changingTradeHist[idx]['crypto_amount'];
-                }
-              });
-            } else if(changingTradeHist[idx]['sell_price'] > 0) {
-              ownedCoins.forEach((ownedCoinsObj) => {
-                if (ownedCoinsObj[changingTradeHist[idx]['crypto_sym']] !== undefined){
-                  ownedCoinsObj[changingTradeHist[idx]['crypto_sym']] += (changingTradeHist[idx]['crypto_amount']);
-                }
-              });
-            }
+          if(changingTradeHist[idx].created_at > currentDate){
+            this.calculateOwnedCoins(changingTradeHist[idx], ownedCoins);
             changingTradeHist.pop();
           }
         }
-        for (let idy = 0; idy < syms.length; idy++) {
-          prices += (ownedCoins[idy][syms[idy]] * coinsDataHist[idy][syms[idy]][i-1].close);
+        for (let idx = 0; idx < syms.length; idx++) {
+          prices += (ownedCoins[idx][syms[idx]] * coinsDataHist[idx][syms[idx]][i-1].close);
         }
       }
       const dateString = new Date(currentDate).toLocaleString('en-US', {month: 'short', day: 'numeric', year:'numeric'});
-      obj['name'] = dateString;
-      obj['USD'] = parseFloat(Math.round(prices * 100)/100).toFixed(2);
+      obj.name = dateString;
+      obj.USD = parseFloat(Math.round(prices * 100)/100).toFixed(2);
       dataPoints.unshift(obj);
       currentDate -= (86400*1000);
     }
     return dataPoints;
+  }
+
+  //return new ownedCoin 
+  calculateOwnedCoins(tradeHist, ownedCoins){
+    const symbol = tradeHist.crypto_sym;
+    const amount = tradeHist.crypto_amount;
+    if (tradeHist.buy_price > 0) {
+      ownedCoins.forEach((ownedCoinsObj) => {
+        if (symbol in ownedCoinsObj){
+          ownedCoinsObj[symbol] -= amount;
+        }
+      });
+    } else if(tradeHist.sell_price > 0) {
+      ownedCoins.forEach((ownedCoinsObj) => {
+        if (symbol in ownedCoinsObj){
+          ownedCoinsObj[symbol] += amount;
+        }
+      });
+    }
   }
 
   customTooltip (content){
@@ -229,7 +236,7 @@ class PortfolioChart extends React.Component {
 
   userCreatedEpoch(){
     const {currentUser} = this.props;
-    const date = currentUser["created_at"];
+    const date = currentUser.created_at;
     const dateArr = date.slice(0,19).split('-');
     dateArr[1] = parseInt(dateArr[1], 10) - 1;
     const dayTime = dateArr[2].split('T');
@@ -257,22 +264,27 @@ class PortfolioChart extends React.Component {
     this.setState({dataReturned: true});
   }
 
-  render(){
-    let dataPoints = this.state.dataPoints ? this.state.dataPoints : null;
+  assignMin(dataPoints){
     let min;
     if(dataPoints){
       for (let i = 0; i < dataPoints.length; i++) {
+        const maybeMin = parseFloat(dataPoints[i].USD);
         if (i === 0){
-          min = parseFloat(dataPoints[i]['USD']);
+          min = maybeMin;
         } else{
-          const maybeMin = parseFloat(dataPoints[i]['USD']);
           if (min > maybeMin){
             min = maybeMin;
           }
         }
       }
     }
-    let strokeColor = dataPoints ? (parseFloat(dataPoints[0]['USD']) > parseFloat(dataPoints[dataPoints.length - 1]['USD']) ? '#F45531' : '#21ce99') : '';
+    return min;
+  }
+
+  render(){
+    let dataPoints = this.state.dataPoints ? this.state.dataPoints : null;
+    let min = this.assignMin(dataPoints);
+    let strokeColor = dataPoints ? (parseFloat(dataPoints[0].USD) > parseFloat(dataPoints[dataPoints.length - 1].USD) ? '#F45531' : '#21ce99') : '';
     return (
       <div className="crypto-chart-container">
           <div id="portfolio-value">Portfolio Value</div>

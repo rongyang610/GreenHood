@@ -6,7 +6,7 @@ const tradeHistoryReducer = (state=[], action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_TRADE_HISTORIES:
-      return Object.assign([], state, Object.values(action.trade));
+      return Object.assign([], Object.values(action.trade));
     case LOGOUT_CURRENT_USER:
       return [];
     default:

@@ -39,9 +39,9 @@ class Api::UsersController < ApplicationController
         @ownedCoins = Hash.new(0)
         @user.trade_histories.each do |trade|
             if trade.buy_price != 0
-                @ownedCoins[trade.crypto_sym] += 1
+                @ownedCoins[trade.crypto_sym] += trade.crypto_amount
             elsif trade.sell_price != 0
-                @ownedCoins[trade.crypto_sym] -= 1
+                @ownedCoins[trade.crypto_sym] -= trade.crypto_amount
             end
         end
     end

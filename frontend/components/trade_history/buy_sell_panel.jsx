@@ -8,6 +8,7 @@ class BuySellPanel extends React.Component{
       sellPage: false,
       buyAmount: '',
       sellAmount: '',
+      sharesOwn: 0
     };
     this.postTransaction = this.postTransaction.bind(this);
   }
@@ -17,6 +18,7 @@ class BuySellPanel extends React.Component{
   }
 
   componentDidUpdate(prevProps){
+    const ownedCoin = this.props.ownedCoins[this.props.id];
     if (prevProps.sym != this.props.sym){
       this.props.getCoinPrice(this.props.sym)
       .then(() => this.setState({
@@ -25,6 +27,11 @@ class BuySellPanel extends React.Component{
         buyAmount: '',
         sellAmount: ''
       }));
+    } else if(ownedCoin != this.state.sharesOwn ){
+      let sharesOwn = ownedCoin ? ownedCoin : 0;
+      this.setState({
+        sharesOwn
+      });
     }
   }
 
@@ -49,6 +56,7 @@ class BuySellPanel extends React.Component{
         sell_price: 0
       });
     } else if (this.state.sellAmount !== ""){
+      // need to validate transaction
       this.props.addTradeHist({
         user_id: this.props.userId, 
         crypto_sym: this.props.sym, 
@@ -130,7 +138,7 @@ class BuySellPanel extends React.Component{
         </form>
         <div className="buy-sell-buy-power">
           <div className="buy-sell-buy-power-text">
-            Shares
+            {this.state.sharesOwn} Shares
           </div>
         </div>
       </>
