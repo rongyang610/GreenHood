@@ -119,10 +119,21 @@
 
 .buy-sell-buy-power{
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
   border-top: 1px solid #ebe9e9;
 }
 
 .buy-sell-buy-power-text{
   padding: 15px 0;
+}
+
+.buy-sell-validation-failed{
+  font-size: 14px;
+  padding-top: 15px;
+}
+
+.buy-sell-validation{
+  display:none;
 }

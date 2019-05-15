@@ -8,6 +8,8 @@ class BuySellPanel extends React.Component{
       sellPage: false,
       buyAmount: '',
       sellAmount: '',
+      sellValid: true,
+      buyValid: true,
       sharesOwn: 0
     };
     this.postTransaction = this.postTransaction.bind(this);
@@ -25,7 +27,10 @@ class BuySellPanel extends React.Component{
         buyPage: true,
         sellPage: false,
         buyAmount: '',
-        sellAmount: ''
+        sellAmount: '',
+        sellValid: true,
+        buyValid: true,
+        sharesOwn: 0
       }));
     } else if(ownedCoin != this.state.sharesOwn ){
       let sharesOwn = ownedCoin ? ownedCoin : 0;
@@ -47,25 +52,41 @@ class BuySellPanel extends React.Component{
 
   postTransaction(e){
     e.preventDefault();
-    if(this.state.buyAmount !== ""){
-      this.props.addTradeHist({
-        user_id: this.props.userId, 
-        crypto_sym: this.props.sym, 
-        crypto_amount: Math.floor(this.state.buyAmount),
-        buy_price: (this.state.buyAmount * this.props.coinPrice['USD']),
-        sell_price: 0
-      });
-    } else if (this.state.sellAmount !== ""){
+    const { buyAmount, sellAmount } = this.state;
+    const ownedCoin = this.props.ownedCoins[this.props.id];
+    let sellValid, buyValid;
+    if(buyAmount !== ""){
+      sellValid = true;
+      if(this.props.userBuyPower < parseFloat(Math.round(Math.floor(this.state.buyAmount) * this.props.coinPrice.USD * 100) / 100)){
+        debugger
+        buyValid = false;
+      } else{
+        buyValid = true;
+        this.props.addTradeHist({
+          user_id: this.props.userId, 
+          crypto_sym: this.props.sym, 
+          crypto_amount: Math.floor(buyAmount),
+          buy_price: (buyAmount * this.props.coinPrice.USD),
+          sell_price: 0
+        });
+      }
+    } else if (sellAmount !== ""){
+      buyValid = true;
       // need to validate transaction
-      this.props.addTradeHist({
-        user_id: this.props.userId, 
-        crypto_sym: this.props.sym, 
-        crypto_amount: Math.floor(this.state.sellAmount),
-        buy_price: 0,
-        sell_price: (this.state.sellAmount * this.props.coinPrice['USD'])
-      });
+      if(ownedCoin < parseInt(sellAmount)){
+          sellValid = false;
+      } else{
+        sellValid = true;
+        this.props.addTradeHist({
+          user_id: this.props.userId, 
+          crypto_sym: this.props.sym, 
+          crypto_amount: Math.floor(sellAmount),
+          buy_price: 0,
+          sell_price: (sellAmount * this.props.coinPrice.USD)
+        });
+      }
     }
-    this.setState({buyAmount: '', sellAmount: ''});
+    this.setState({ sellValid, sellAmount: '', buyAmount: '', buyValid});
   }
 
   render(){
@@ -87,11 +108,11 @@ class BuySellPanel extends React.Component{
         </div>
         <div className="buy-sell-form-component buy-sell-market-price">
           <div>Market Price</div>
-          <div className="market-price-value">${parseFloat(Math.round(this.props.coinPrice['USD'] * 100)/100).toFixed(2)}</div>
+          <div className="market-price-value">${parseFloat(Math.round(this.props.coinPrice.USD * 100)/100).toFixed(2)}</div>
         </div>
         <div className="buy-sell-form-component buy-sell-estimated-cost">
           <div>Estimated Cost</div>
-          <div>${parseFloat(Math.round(Math.floor(this.state.buyAmount) * this.props.coinPrice['USD'] * 100) / 100).toFixed(2)}</div>
+          <div>${parseFloat(Math.round(Math.floor(this.state.buyAmount) * this.props.coinPrice.USD * 100) / 100).toFixed(2)}</div>
         </div>
         <center>
           <button className="buy-sell-button">
@@ -100,6 +121,7 @@ class BuySellPanel extends React.Component{
         </center>
       </form>
       <div className="buy-sell-buy-power">
+        <div className={ this.state.buyValid ? "buy-sell-validation" : "buy-sell-validation-failed"}><i className="fas fa-info-circle"></i> Not enough buy power</div>
         <div className="buy-sell-buy-power-text">
           ${this.props.userBuyPower} Buy Power Available
         </div>
@@ -124,11 +146,11 @@ class BuySellPanel extends React.Component{
           </div>
           <div className="buy-sell-form-component buy-sell-market-price">
             <div>Market Price</div>
-            <div className="market-price-value">${parseFloat(Math.round(this.props.coinPrice['USD'] * 100) / 100).toFixed(2)}</div>
+            <div className="market-price-value">${parseFloat(Math.round(this.props.coinPrice.USD * 100) / 100).toFixed(2)}</div>
           </div>
           <div className="buy-sell-form-component buy-sell-estimated-cost">
             <div>Estimated Credit</div>
-            <div>${parseFloat(Math.round(Math.floor(this.state.sellAmount) * this.props.coinPrice['USD'] * 100) / 100).toFixed(2)}</div>
+            <div>${parseFloat(Math.round(Math.floor(this.state.sellAmount) * this.props.coinPrice.USD * 100) / 100).toFixed(2)}</div>
           </div>
           <center>
             <button className="buy-sell-button">
@@ -137,6 +159,7 @@ class BuySellPanel extends React.Component{
           </center>
         </form>
         <div className="buy-sell-buy-power">
+          <div className={ this.state.sellValid ? "buy-sell-validation" : "buy-sell-validation-failed"}><i className="fas fa-info-circle"></i> Not enough shares</div>
           <div className="buy-sell-buy-power-text">
             {this.state.sharesOwn} Shares
           </div>

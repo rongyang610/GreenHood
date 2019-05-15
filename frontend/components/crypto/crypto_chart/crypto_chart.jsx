@@ -19,14 +19,14 @@ class CryptoChart extends React.Component {
     }
 
     componentDidMount(){
-      this.props.getChartData(this.props.sym, this.props.dateType)
+      this.props.getChartData(this.props.sym, '1d')
       .then(() => this.props.getCoinInfo(this.props.sym))
       .then(() => this.setState({mounted: true}));
     }
 
     componentDidUpdate(prevProps, prevState){
       if(prevProps.sym !== this.props.sym){
-        this.props.getChartData(this.props.sym, this.props.dateType);
+        this.props.getChartData(this.props.sym, '1d');
         this.setState(() => {
           return {
             dateType: '1d',
