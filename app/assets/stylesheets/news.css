@@ -46,4 +46,8 @@
 .news-description{
   font-size: 15px;
   font-weight: 90;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: unset;
+  height: 3.5em;
 }

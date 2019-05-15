@@ -67,7 +67,7 @@ class BuySellPanel extends React.Component{
         buyValid = false;
       } else{
         buyValid = true;
-        const buyPower = userBuyPower - buy_price;
+        const buyPower = parseFloat(Math.round((userBuyPower - buy_price) * 100) / 100);
         updateUserInfo(userId, buyPower)
         .then(() => addTradeHist({
           user_id: userId, 
@@ -85,7 +85,7 @@ class BuySellPanel extends React.Component{
           sellValid = false;
       } else{
         sellValid = true;
-        const buyPower = userBuyPower + sell_price;
+        const buyPower = parseFloat(Math.round((userBuyPower + sell_price) * 100) / 100);
         updateUserInfo(userId, buyPower)
         .then(() => addTradeHist({
           user_id: userId, 
