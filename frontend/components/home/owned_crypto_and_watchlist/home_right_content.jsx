@@ -40,7 +40,7 @@ class OwnedStocksAndWatchlist extends React.PureComponent{
                 {sym}
               </div>
               <div>
-                {shares} of Shares
+                {shares} Shares
               </div>
             </div>
             <div className="owned-crypto-middle-component">

@@ -10,7 +10,6 @@ export const updateCurrentUser = (user) => {
 };
 
 export const updateUserInfo = (id, buyPower) => dispatch => {
-  return UserAPIUtil.patchUser(id, buyPower).then( (user) => {
-    dispatch(updateCurrentUser(user));
-  });
+  return UserAPIUtil.patchUser(id, buyPower)
+  .then( (user) => dispatch(updateCurrentUser(user)));
 };

@@ -27,7 +27,7 @@ class Api::UsersController < ApplicationController
         #         @ownedCoins[trade.crypto_sym] -= 1
         #     end
         # end
-        if (@user) && (current_user.id == @user.id) && (@user.update(buying_power: params[:buyingPower]))
+        if (@user) && (current_user.id == @user.id) && (@user.update(buy_power: params[:buyingPower]))
            render 'api/users/show'
         else
             render json: @user.errors.full_messages, status: 406

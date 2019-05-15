@@ -34,6 +34,9 @@ class BuySellPanel extends React.Component{
       }));
     } else if(ownedCoin != this.state.sharesOwn ){
       let sharesOwn = ownedCoin ? ownedCoin : 0;
+      if (!(this.props.sym in this.props.ownedCoins)){
+        return;
+      }
       this.setState({
         sharesOwn
       });
@@ -53,41 +56,50 @@ class BuySellPanel extends React.Component{
   postTransaction(e){
     e.preventDefault();
     const { buyAmount, sellAmount } = this.state;
+    const {coinPrice, updateUserInfo, userId, sym,addTradeHist, userBuyPower} = this.props;
     const ownedCoin = this.props.ownedCoins[this.props.id];
     let sellValid, buyValid;
+
     if(buyAmount !== ""){
       sellValid = true;
-      if(this.props.userBuyPower < parseFloat(Math.round(Math.floor(this.state.buyAmount) * this.props.coinPrice.USD * 100) / 100)){
-        debugger
+      const buy_price = parseFloat(Math.round(Math.floor(buyAmount) * coinPrice.USD * 100) / 100);
+      if(userBuyPower < buy_price){
         buyValid = false;
       } else{
         buyValid = true;
-        this.props.addTradeHist({
-          user_id: this.props.userId, 
-          crypto_sym: this.props.sym, 
+        const buyPower = userBuyPower - buy_price;
+        updateUserInfo(userId, buyPower)
+        .then(() => addTradeHist({
+          user_id: userId, 
+          crypto_sym: sym, 
           crypto_amount: Math.floor(buyAmount),
-          buy_price: (buyAmount * this.props.coinPrice.USD),
+          buy_price,
           sell_price: 0
-        });
+        }));
       }
     } else if (sellAmount !== ""){
       buyValid = true;
+      const sell_price = parseFloat(Math.round(Math.floor(sellAmount) * coinPrice.USD * 100) / 100);
       // need to validate transaction
       if(ownedCoin < parseInt(sellAmount)){
           sellValid = false;
       } else{
         sellValid = true;
-        this.props.addTradeHist({
-          user_id: this.props.userId, 
-          crypto_sym: this.props.sym, 
+        const buyPower = userBuyPower + sell_price;
+        updateUserInfo(userId, buyPower)
+        .then(() => addTradeHist({
+          user_id: userId, 
+          crypto_sym: sym, 
           crypto_amount: Math.floor(sellAmount),
           buy_price: 0,
-          sell_price: (sellAmount * this.props.coinPrice.USD)
-        });
+          sell_price,
+        }));
       }
     }
     this.setState({ sellValid, sellAmount: '', buyAmount: '', buyValid});
   }
+
+  //create a function called updating buy power and adding transaction function
 
   render(){
     let buy = (

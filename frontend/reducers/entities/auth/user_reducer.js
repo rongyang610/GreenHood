@@ -9,7 +9,7 @@ export default (state={}, action) => {
         case RECEIVE_CURRENT_USER:        
             return merge({}, { [action.currentUser.id]: action.currentUser });
         case UPDATE_CURRENT_USER:
-            return merge({}, { [action.currentUser.id]: action.currentUser });
+            return merge({}, { [action.user.id]: action.user });
         case RECEIVE_USER:
             return merge({}, { [action.user.id]: action.user });
         case LOGOUT_CURRENT_USER:
