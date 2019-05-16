@@ -1,10 +1,20 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 
 class NavAccount extends React.Component {
   capitalize(string){
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
+
+  convertToUSD(price){
+    let convertedPrice = parseFloat(price).toLocaleString().split('.');
+      if (!convertedPrice[1]){
+        convertedPrice.push('00');
+      } else if (convertedPrice[1].length < 2){
+        convertedPrice[1] += '0';
+      }
+      return convertedPrice.join('.');
+  }
+
   render(){
     const {currentUser, logout} = this.props;
     return (
@@ -15,17 +25,17 @@ class NavAccount extends React.Component {
               {this.capitalize(currentUser.fname)} {this.capitalize(currentUser.lname)}
             </div>
             <div className="nav-account-component-first-section nav-account-port-buy">
-              <div className="portfolio-value">
+              {/* <div className="portfolio-value">
                 <div className="port-buy-value">
-                  $0.00 {/* will have to map state to props */}
+                  $0.00
                 </div>
                 <div className="port-buy-text">
                   Portfolio Value
                 </div>
-              </div>
+              </div> */}
               <div className="buying-power">
                 <div className="port-buy-value">
-                  $0.00 {/* will have to map state to props */}
+                  ${this.convertToUSD(this.props.currentUser.buy_power)}
                 </div>
                 <div className="port-buy-text">
                   Buying Power

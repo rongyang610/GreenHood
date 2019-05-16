@@ -99,6 +99,16 @@ class BuySellPanel extends React.Component{
     this.setState({ sellValid, sellAmount: '', buyAmount: '', buyValid});
   }
 
+  convertToUSD(price){
+    let convertedPrice = parseFloat(price).toLocaleString().split('.');
+      if (!convertedPrice[1]){
+        convertedPrice.push('00');
+      } else if (convertedPrice[1].length < 2){
+        convertedPrice[1] += '0';
+      }
+      return convertedPrice.join('.');
+  }
+
   //create a function called updating buy power and adding transaction function
 
   render(){
@@ -135,7 +145,7 @@ class BuySellPanel extends React.Component{
       <div className="buy-sell-buy-power">
         <div className={ this.state.buyValid ? "buy-sell-validation" : "buy-sell-validation-failed"}><i className="fas fa-info-circle"></i> Not enough buy power</div>
         <div className="buy-sell-buy-power-text">
-          ${this.props.userBuyPower} Buy Power Available
+          ${this.convertToUSD(this.props.userBuyPower)} Buy Power Available
         </div>
       </div>
       </>
