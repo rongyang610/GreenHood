@@ -8,10 +8,6 @@ class User < ApplicationRecord
     attr_reader :password
 
     has_many :watchlist_items
-    has_many :watchlist_cryptos,
-        through: :watchlist_items,
-        source: :crypto
-
     has_many :trade_histories
 
     def password=(password)

@@ -4,22 +4,10 @@ import { Link } from 'react-router-dom';
 class OwnedStocksAndWatchlist extends React.PureComponent{
   constructor(props){
     super(props);
-    // this.state={
-    //   ownedCoinsData: false,
-    //   coinsPriceData: false
-    // };
-  // }
-  // componentDidUpdate(prevProp){
-  //   if ((prevProp.ownedCoins !== this.props.ownedCoins)){
-  //     this.setState({ownedCoinsData: true});
-  //   } else if((prevProp.coinsPrice !== this.props.coinsPrice)){
-  //     this.setState({coinsPriceData: true});
-  //   }
-  // }
   }
   render(){
     const {ownedCoins, coinsPrice} = this.props;
-    let result = (ownedCoins.length !==0) ? ownedCoins.map( (obj, idx) => {
+    let ownedResult = (ownedCoins.length !==0) ? ownedCoins.map( (obj, idx) => {
       let sym = Object.keys(obj)[0];
       let shares = Object.values(obj)[0];
       if(obj[sym] != 0){
@@ -59,10 +47,10 @@ class OwnedStocksAndWatchlist extends React.PureComponent{
         <div className="cryptocurrency-title">
           Cryptocurrencies
         </div>
-        {result}
-        {/* <div className="watchlist-title">
+        {ownedResult}
+        <div className="watchlist-title">
           Watchlist
-        </div> */}
+        </div>
       </div>
     )
   }

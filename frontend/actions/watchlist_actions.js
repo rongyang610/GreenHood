@@ -35,6 +35,15 @@ export const getWatchlistItems = (userId) => dispatch => {
   );
 };
 
+export const getWatchlistItem = (userId, cryptoSym) => dispatch => {
+  return (
+    WatchAPIUtil.fetchWatchlistItem(userId, cryptoSym)
+    .then( (watchlistItem) => {
+      return dispatch(receiveWatchlistItem(watchlistItem));
+    })  
+  );
+};
+
 export const addWatchlistItem = (userId, watchlistItem) => dispatch => {
   return (
     WatchAPIUtil.createWatchlistItem(userId, watchlistItem)
@@ -43,7 +52,7 @@ export const addWatchlistItem = (userId, watchlistItem) => dispatch => {
 };
 
 export const removeWatchlistItem = (userId, watchlistItem) => dispatch => {
-  retunr (
+  return (
     WatchAPIUtil.deleteWatchlistItem(userId, watchlistItem)
       .then((response) => dispatch(deleteWatchlistItem(response)))
   );

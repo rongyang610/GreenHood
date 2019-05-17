@@ -1,6 +1,6 @@
 import React from 'react';
 import CryptoChart from './crypto_chart/crypto_chart';
-import Watchlist from '../watchlist/watchlist';
+import WatchlistContainer from '../watchlist/watchlist_container';
 import BuySellPanelContainer from '../trade_history/buy_sell_panel_container';
 import News from './news/crypto_news';
 
@@ -45,14 +45,9 @@ class Crypto extends React.Component {
                   <div>
                     <BuySellPanelContainer sym={this.props.id}/>
                   </div>
-                  {/* <Watchlist
-                    watchlist={this.props.watchlist}
-                    userId={this.props.userId}
-                    getWatchlistItems={this.props.getWatchlistItems}
-                    addWatchlistItem={this.props.addWatchlistItem}
-                    removeWatchlistItem={this.props.removeWatchlistItem}
-                    sym={this.props.id}
-                  /> */}
+                  <div>
+                    <WatchlistContainer sym={this.props.id}/>
+                  </div>
                 </div>
               </div>
             </div>

@@ -1,7 +1,7 @@
 class Api::WatchlistItemsController < ApplicationController
 
   def index
-    @watchlist_items = WatchlistItem.where(user_id: params[:user_id])
+    @watchlist_items = current_user.watchlist_items
     render 'api/watchlist_items/index'
   end
   
@@ -14,8 +14,17 @@ class Api::WatchlistItemsController < ApplicationController
     end
   end
 
+  def show
+    @watchlist_item = current_user.watchlist_items.find_by({crypto_sym: params[:id]})
+    if @watchlist_item
+      render 'api/watchlist_items/show'
+    else
+      render json: {}
+    end
+  end
+
   def destroy
-    @watchlist_item = WatchlistItem.find_by( id: params[:id])
+    @watchlist_item = current_user.watchlist_items.find_by({crypto_sym: params[:id]})
     @watchlist_item.destroy
     render 'api/watchlist_items/show'
   end

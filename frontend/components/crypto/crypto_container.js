@@ -1,9 +1,8 @@
 
 import {connect} from 'react-redux';
-import {getCoinsList, getChartData, getStats, getCoinPrice, getCoinInfo} from '../../actions/crypto_actions';
-import { getWatchlistItems, addWatchlistItem, removeWatchlistItem } from '../../actions/watchlist_actions';
+import {getCoinsList, getChartData, getStats, getCoinInfo} from '../../actions/crypto_actions';
+import { getWatchlistItems } from '../../actions/watchlist_actions';
 import Crypto from './crypto';
-import { addTradeHistory } from '../../actions/trade_histories_actions';
 import {getNews} from '../../actions/news_actions';
 
 const msp = ({entities, session}, ownProps) => {
@@ -14,7 +13,7 @@ const msp = ({entities, session}, ownProps) => {
         stats: entities.cryptos.stats,
         dataHist: entities.cryptos.dataHistory,
         tradeHist: entities.tradeHist,
-        watchlist: entities.watchlist,
+        watchlists: entities.watchlist.watchlistItems,
         ownedCoins: entities.users[session.id].ownedCoins,
         id: ownProps.match.params.sym,
         news: entities.news
@@ -29,8 +28,6 @@ const mdp = dispatch => {
         getNews: sym => dispatch(getNews(sym)),
         getStats: (syms) => dispatch(getStats(syms)),
         getWatchlistItems: (userId) => dispatch(getWatchlistItems(userId)),
-        addWatchlistItem: (userId, watchlistItem) => dispatch(addWatchlistItem(userId, watchlistItem)),
-        removeWatchlistItem: (userId, watchlistItem) => dispatch(removeWatchlistItem(userId, watchlistItem))
     };
 };
 
