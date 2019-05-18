@@ -18,7 +18,7 @@ const mdp = dispatch => {
     return {
         getTradeHistories: (userId) => dispatch(getTradeHistories(userId)),
         getChartData: (sym, dateType) => dispatch(getChartData(sym, dateType)),
-        getMultCoinsPrice: (syms) => dispatch(getMultCoinsPrice(syms)) ,
+        getMultCoinsPrice: (syms) => dispatch(getMultCoinsPrice(syms)),
         getAllNews:(syms) => dispatch(getAllNews(syms))
     };
 };

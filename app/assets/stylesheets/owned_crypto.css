@@ -18,6 +18,7 @@
   box-shadow: 0px 0px 25px #888888;
   margin-bottom: 20px;
   height: 100%;
+  overflow: auto;
 }
 
 .owned-crypto-components-container{

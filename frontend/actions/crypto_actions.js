@@ -7,6 +7,7 @@ export const RECEIVE_DATAS = 'RECEIVE_DATAS';
 export const RECEIVE_MULT_DATAS = 'RECEIVE_MULT_DATAS';
 export const RECEIVE_COIN_PRICE = 'RECEIVE_COIN_PRICE';
 export const RECEIVE_MULT_COINS_PRICE = 'RECEIVE_MULT_COINS_PRICE';
+export const RECEIVE_MULT_WATCHLIST_COINS_PRICE = 'RECEIVE_MULT_WATCHLIST_COINS_PRICE';
 
 const receiveCoinsList = (coins) => {
   return {
@@ -57,6 +58,13 @@ const receiveMultCoinPrice = (coinsPrice) => {
   };
 };
 
+const receiveMultWatchlistCoinPrice = (coinsPrice) => {
+  return {
+    type: RECEIVE_MULT_WATCHLIST_COINS_PRICE,
+    coinsPrice
+  };
+};
+
 export const getChartData = (sym, dateType) => dispatch => {
   return (
     CryptoAPIUtil.fetchHistoryDatas(sym, dateType)
@@ -100,6 +108,13 @@ export const getMultCoinsPrice= (syms) => dispatch => {
   return(
     CryptoAPIUtil.fetchMultCoinsPrice(syms)
     .then((coinsPrice) => dispatch(receiveMultCoinPrice(coinsPrice)))
+  );
+};
+
+export const getMultWatchlistCoinsPrice= (syms) => dispatch => {
+  return(
+    CryptoAPIUtil.fetchMultCoinsPrice(syms)
+    .then((coinsPrice) => dispatch(receiveMultWatchlistCoinPrice(coinsPrice)))
   );
 };
 

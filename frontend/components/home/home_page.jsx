@@ -1,5 +1,5 @@
 import React from 'react';
-import SideBar from './owned_crypto_and_watchlist/home_right_content';
+import SideBarContainer from './owned_crypto_and_watchlist/side_bar_container';
 import PortfolioChart from './Portfolio/portfolio_chart';
 import News from './news/all_news';
 
@@ -10,6 +10,7 @@ class UserHomePage extends React.Component {
       userId: this.props.currentUser.id,
       ownedCoins: [],
       syms: [],
+      watchlist: [],
     };
   }
 
@@ -85,10 +86,7 @@ class UserHomePage extends React.Component {
           <div className="right-side-nav-main-container">
             <div className="right-side-nav-container-home">
               {/* owned stocks and watchlist here */}
-              <SideBar
-                ownedCoins={this.state.ownedCoins}
-                coinsPrice={this.props.coinsPrice}
-              />
+              <SideBarContainer ownedCoins={this.state.ownedCoins}/>
             </div>
           </div>
         </div>
