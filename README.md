@@ -62,4 +62,4 @@ Through CryptoCompare API and Recharts API, users are able to view a chart for a
 
 ## Future Plans
 
-* Watchlist - Allows the user to add coins to a watchlist that shows up on their dashboard
+* Refactor
