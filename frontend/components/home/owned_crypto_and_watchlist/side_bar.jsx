@@ -99,7 +99,6 @@ class OwnedStocksAndWatchlist extends React.PureComponent{
 
   render(){
     const {ownedCoins, coinsPrice, watchlists, watchlistCoinsPrice} = this.props;
-    debugger
     const watchlistArr = Object.values(watchlists);
     const ownedResult = (ownedCoins.length !==0) ? this.result(ownedCoins, coinsPrice) : null;
     const watchlistRes = (watchlistArr.length !==0 && this.state.watchlistPriceCall) ? this.watchlistResult(watchlistArr, watchlistCoinsPrice) : null;
